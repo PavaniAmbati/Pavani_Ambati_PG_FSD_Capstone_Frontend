@@ -1,1 +1,1 @@
-# https-github.com-PavaniAmbati-Pavani_Ambati_PG_FSD_Capstone_Frontend
+# Pavani_Ambati_PG_FSD_Capstone_Frontend
