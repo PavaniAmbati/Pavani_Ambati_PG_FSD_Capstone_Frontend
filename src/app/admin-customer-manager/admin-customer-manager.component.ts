@@ -42,17 +42,45 @@ export class AdminCustomerManagerComponent implements OnInit {
     this.stringifycustomer = JSON.stringify(customer);  
      // Parse from JSON  
     this.parsecustomer = JSON.parse(this.stringifycustomer);   
-    console.log(this.parsecustomer.custid);
+    //console.log(this.parsecustomer);
 
-    if(cust.approval == "approve"){
-      this.onlineaccountstatus = {"onlineaccountstatus": "active"}
+    if(cust.approval == "activate"){
+      this.onlineaccountstatus = {
+          "firstname": this.parsecustomer.firstname,
+          "lastname": this.parsecustomer.lastname,
+          "phonenumber": this.parsecustomer.phonenumber,
+          "email": this.parsecustomer.email,
+          "housenumber": this.parsecustomer.housenumber,
+          "streetname": this.parsecustomer.streetname,
+          "city": this.parsecustomer.city,
+          "state": this.parsecustomer.state,
+          "country": this.parsecustomer.country,
+          "postalcode": this.parsecustomer.postalcode,
+          "dateofbirth": this.parsecustomer.dateofbirth,
+          "onlineaccountstatus": "active" 
+        }
+        //console.log(this.onlineaccountstatus);
+
       this.restApi.updateCustomer(this.parsecustomer.custid, this.onlineaccountstatus).subscribe(data => {
-        this.router.navigate(['/admincustomermanagement'])
+        //this.router.navigate(['/admincustomermanager'])
       }) 
     }else {
-      this.onlineaccountstatus = {"onlineaccountstatus": "blocked"}
+      this.onlineaccountstatus = this.onlineaccountstatus = {
+        "firstname": this.parsecustomer.firstname,
+        "lastname": this.parsecustomer.lastname,
+        "phonenumber": this.parsecustomer.phonenumber,
+        "email": this.parsecustomer.email,
+        "housenumber": this.parsecustomer.housenumber,
+        "streetname": this.parsecustomer.streetname,
+        "city": this.parsecustomer.city,
+        "state": this.parsecustomer.state,
+        "country": this.parsecustomer.country,
+        "postalcode": this.parsecustomer.postalcode,
+        "dateofbirth": this.parsecustomer.dateofbirth,
+        "onlineaccountstatus": "blocked" 
+      }
       this.restApi.updateCustomer(this.parsecustomer.custid, this.onlineaccountstatus).subscribe(data => {
-        this.router.navigate(['/admincustomermanagement'])
+        //this.router.navigate(['/admincustomermanagement'])
       }) 
     }
 

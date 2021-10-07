@@ -35,7 +35,6 @@ export class CustomerService {
   updateCustomer(id: any, onlineaccountstatus: any): Observable<customerInterface[]>{
       console.log(JSON.stringify(onlineaccountstatus));
      return this.http.put<customerInterface[]>(this.apiURL + '/customers/' + id, JSON.stringify(onlineaccountstatus), this.httpOptions)
-
     }
  
       // Error handling 
