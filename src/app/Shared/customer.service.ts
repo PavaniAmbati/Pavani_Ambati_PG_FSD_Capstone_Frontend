@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { customerInterface } from './customers';
-import { onlinestatustypeInterface } from './onlinestatustypes';
+
 
 
 @Injectable({

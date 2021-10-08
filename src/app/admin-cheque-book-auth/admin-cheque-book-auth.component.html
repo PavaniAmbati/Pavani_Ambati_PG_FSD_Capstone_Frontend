@@ -41,8 +41,73 @@
 
 
   </nav>
-  <!--********Menu bar end*******-->
+  
   <div class="mt-5"></div>
+
+ 
+  <div class="col-md-3 table-bordered">
+    <br>
+   
+
+        <li class="form-inline my-2 my-lg-0">
+
+          <h6>Select status</h6>
+          &nbsp; &nbsp;
+          <select name="Authorize" id="#" [(ngModel)]="chequerequests.status" >
+            <option selected="selected" value=""></option>
+            <option value="wating for approval">waiting for approval</option>
+            <option value="approved">approved</option>
+            <option value="blocked">blocked</option>
+            </select> &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;
+            <button class="btn btn-secondary my-2 my-sm-0" name="submit" type="submit" (click)='filterChequerequest(chequerequests.status)' >Submit</button>
+
+        </li>
+    
+   
+    <br>
+</div>
+
+<br><br>
+
+  <div class="col-md-12">
+
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Cheque Type</th>
+          <th scope="col">Cheque Request Status</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let chequerequest of chequerequests">
+          <td>{{chequerequest.chequetype}}</td>
+          <td>{{chequerequest.chequerequeststatus}}</td>
+          <td>
+            <select name="Authorize" id="#" [(ngModel)]="cheque.approval">
+              <option selected="selected" value=""></option>
+              <option value="approve">approve</option>
+              <option value="decline">decline</option>
+              </select> &nbsp;&nbsp;
+              <button class="btn btn-secondary my-2 my-sm-0" name="submit" type="submit" (click)='updateStatus(cheque, chequerequest)'>Submit</button>
+          </td>
+        
+          <!--<td><button class="btn btn-danger my-2 my-sm-0" name="edit"
+                    routerLink='/admineditproduct/{{categoryitem.id}}' type="submit">Edit</button>
+                &nbsp;  -->
+
+          <!-- &nbsp;
+                <button class="btn btn-danger" type="button" name="delete"
+                    (click)='deleteCatitem(categoryitem.id)'>Delete Product</button>
+            </td>-->
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+
+
 
 
 

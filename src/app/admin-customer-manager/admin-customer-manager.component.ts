@@ -12,7 +12,6 @@ export class AdminCustomerManagerComponent implements OnInit {
 
   public customers: any = [];
   @Input() cust = { approval: '' };
-  @Input() filter = { status: '' };
   public parsecustomer: any;
   public stringifycustomer: any;
   public onlineaccountstatus: any = [];
@@ -28,7 +27,7 @@ export class AdminCustomerManagerComponent implements OnInit {
   }
 
 
-  //Get category item list
+  //Get customer list
   loadcustlist() {
     return this.restApi.getCustomers().subscribe((data: {}) => {
       this.customers = data;
@@ -36,7 +35,7 @@ export class AdminCustomerManagerComponent implements OnInit {
     })
   }
 
-
+ //filter customer list by status
   filterCustomer(onlineaccountstatus: any) {
 
     console.log(onlineaccountstatus.status);
@@ -47,7 +46,7 @@ export class AdminCustomerManagerComponent implements OnInit {
 }
 
 
-
+  //update customer online account status
   updateStatus(cust: any, customer: any) {
 
     console.log(cust.approval);

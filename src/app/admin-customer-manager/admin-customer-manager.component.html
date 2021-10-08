@@ -54,13 +54,13 @@
 
           <h6>Select status</h6>
           &nbsp; &nbsp;
-          <select name="Authorize" id="#" [(ngModel)]="filter.status" >
+          <select name="Authorize" id="#" [(ngModel)]="customers.onlineaccountstatus" >
             <option selected="selected" value=""></option>
             <option value="wating for approval">waiting for approval</option>
             <option value="active">active</option>
             <option value="blocked">blocked</option>
             </select> &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;
-            <button class="btn btn-secondary my-2 my-sm-0" name="submit" type="submit" (click)='filterCustomer(filter)' >Submit</button>
+            <button class="btn btn-secondary my-2 my-sm-0" name="submit" type="submit" (click)='filterCustomer(customers.onlineaccountstatus)' >Submit</button>
 
         </li>
     
