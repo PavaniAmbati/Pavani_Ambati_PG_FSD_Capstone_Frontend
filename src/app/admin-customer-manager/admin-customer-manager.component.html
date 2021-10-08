@@ -42,47 +42,33 @@
 
   </nav>
   <!--********Menu bar end*******-->
-  <!--
+  
   <div class="mt-5"></div>
 
  
   <div class="col-md-3 table-bordered">
     <br>
-    <div class="row">
-        <li class="form-inline my-2 my-lg-0">
-            <input type="text" class="form-control mr-sm-2"
-                placeholder="Enter Category" id="category" name="category">
-            <button class="btn btn-outline-danger my-2 my-sm-0" type="button" name="filtercat">
-                Filter by Category</button>
-        </li>
+   
 
-    </div>
-    &nbsp;
-    <div class="row">
         <li class="form-inline my-2 my-lg-0">
-            <input type="text" class="form-control mr-sm-2"
-                placeholder="Enter Item" id="item" name="item">
-            <button class="btn btn-outline-danger my-2 my-sm-0" type="button" name="filteritem">
-                Filter by Item</button>
-        </li>
-    </div>
-    &nbsp;
-    <div class="row">
-        <li class="form-inline my-2 my-lg-0">
-            <button class="btn btn-danger my-2 my-sm-0" type="button" name="add">Show All Products</button>
-            &nbsp; &nbsp;
-            <button class="btn btn-danger my-2 my-sm-0" type="button" name="add"
-                routerLink='/adminaddproduct'>Add
-                New Product</button>
+
+          <h6>Select status</h6>
+          &nbsp; &nbsp;
+          <select name="Authorize" id="#" [(ngModel)]="filter.status" >
+            <option selected="selected" value=""></option>
+            <option value="wating for approval">waiting for approval</option>
+            <option value="active">active</option>
+            <option value="blocked">blocked</option>
+            </select> &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;
+            <button class="btn btn-secondary my-2 my-sm-0" name="submit" type="submit" (click)='filterCustomer(filter)' >Submit</button>
 
         </li>
-
-    </div>
+    
+   
     <br>
 </div>
 
 <br><br>
--->
 
   <div class="col-md-12">
 

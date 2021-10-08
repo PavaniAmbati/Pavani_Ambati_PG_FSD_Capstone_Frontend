@@ -11,7 +11,8 @@ import { CustomerService } from '../Shared/customer.service';
 export class AdminCustomerManagerComponent implements OnInit {
 
   public customers: any = [];
-  @Input() cust = { approval: '' }
+  @Input() cust = { approval: '' };
+  @Input() filter = { status: '' };
   public parsecustomer: any;
   public stringifycustomer: any;
   public onlineaccountstatus: any = [];
@@ -23,9 +24,10 @@ export class AdminCustomerManagerComponent implements OnInit {
 
   ngOnInit() {
     this.loadcustlist();
+
   }
 
-  
+
   //Get category item list
   loadcustlist() {
     return this.restApi.getCustomers().subscribe((data: {}) => {
@@ -34,37 +36,49 @@ export class AdminCustomerManagerComponent implements OnInit {
     })
   }
 
+
+  filterCustomer(onlineaccountstatus: any) {
+
+    console.log(onlineaccountstatus.status);
+   return this.restApi.getCustomersbystatus(onlineaccountstatus.status).subscribe((data: {}) => {
+      this.customers = data;
+      console.log(this.customers);
+    }) 
+}
+
+
+
   updateStatus(cust: any, customer: any) {
 
     console.log(cust.approval);
     console.log(customer);
 
-    this.stringifycustomer = JSON.stringify(customer);  
-     // Parse from JSON  
-    this.parsecustomer = JSON.parse(this.stringifycustomer);   
+    this.stringifycustomer = JSON.stringify(customer);
+    // Parse from JSON  
+    this.parsecustomer = JSON.parse(this.stringifycustomer);
     //console.log(this.parsecustomer);
 
-    if(cust.approval == "activate"){
+    if (cust.approval == "activate") {
       this.onlineaccountstatus = {
-          "firstname": this.parsecustomer.firstname,
-          "lastname": this.parsecustomer.lastname,
-          "phonenumber": this.parsecustomer.phonenumber,
-          "email": this.parsecustomer.email,
-          "housenumber": this.parsecustomer.housenumber,
-          "streetname": this.parsecustomer.streetname,
-          "city": this.parsecustomer.city,
-          "state": this.parsecustomer.state,
-          "country": this.parsecustomer.country,
-          "postalcode": this.parsecustomer.postalcode,
-          "dateofbirth": this.parsecustomer.dateofbirth,
-          "onlineaccountstatus": "active" 
-        }
-        //console.log(this.onlineaccountstatus);
+        "firstname": this.parsecustomer.firstname,
+        "lastname": this.parsecustomer.lastname,
+        "phonenumber": this.parsecustomer.phonenumber,
+        "email": this.parsecustomer.email,
+        "housenumber": this.parsecustomer.housenumber,
+        "streetname": this.parsecustomer.streetname,
+        "city": this.parsecustomer.city,
+        "state": this.parsecustomer.state,
+        "country": this.parsecustomer.country,
+        "postalcode": this.parsecustomer.postalcode,
+        "dateofbirth": this.parsecustomer.dateofbirth,
+        "onlineaccountstatus": "active"
+      }
+      //console.log(this.onlineaccountstatus);
 
       this.restApi.updateCustomer(this.parsecustomer.custid, this.onlineaccountstatus).subscribe(data => {
         //this.router.navigate(['/admincustomermanager'])
-      }) 
-    }else {
+      })
+    } else {
       this.onlineaccountstatus = this.onlineaccountstatus = {
         "firstname": this.parsecustomer.firstname,
         "lastname": this.parsecustomer.lastname,
@@ -77,16 +91,16 @@ export class AdminCustomerManagerComponent implements OnInit {
         "country": this.parsecustomer.country,
         "postalcode": this.parsecustomer.postalcode,
         "dateofbirth": this.parsecustomer.dateofbirth,
-        "onlineaccountstatus": "blocked" 
+        "onlineaccountstatus": "blocked"
       }
       this.restApi.updateCustomer(this.parsecustomer.custid, this.onlineaccountstatus).subscribe(data => {
         //this.router.navigate(['/admincustomermanagement'])
-      }) 
+      })
     }
 
-
-   
 
   }
 
 }
+
+

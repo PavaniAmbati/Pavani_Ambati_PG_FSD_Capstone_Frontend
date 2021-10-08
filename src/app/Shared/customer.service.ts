@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { customerInterface } from './customers';
+import { onlinestatustypeInterface } from './onlinestatustypes';
 
 
 @Injectable({
@@ -20,7 +21,7 @@ export class CustomerService {
       })
   }
 
-    //Get list of category items
+    //Get list of customers
     getCustomers(): Observable<customerInterface[]> {
       return this.http.get<customerInterface[]>(this.apiURL + '/customers')
         .pipe(
@@ -28,6 +29,16 @@ export class CustomerService {
           catchError(this.handleError)
         )
     }
+
+    getCustomersbystatus(onlineaccountstatus: string): Observable<customerInterface[]>{
+      
+      return this.http.get<customerInterface[]>(this.apiURL + '/customers/' + onlineaccountstatus)
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      )
+  } 
+
 
     // HttpClient API put() method => Update customer
     //updateCustomer(){}
