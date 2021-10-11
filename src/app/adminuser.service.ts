@@ -36,10 +36,10 @@ export class AdminuserService {
   }
 
   // HttpClient API put() method => Update employee
-  updateUser(id: any, adminuser: any): Observable<adminusersInterface[]> {
+  updateUser(username: any, adminuser: any): Observable<adminusersInterface[]> {
     
     console.log(JSON.stringify(adminuser));
-    return this.http.put<adminusersInterface[]>(this.apiURL + '/adminusers/' + id, JSON.stringify(adminuser), this.httpOptions)
+    return this.http.put<adminusersInterface[]>(this.apiURL + '/adminusers/' + username, JSON.stringify(adminuser), this.httpOptions)
  
     
      /* .pipe(

@@ -19,14 +19,15 @@ import { CustomerTransferFundsComponent } from './customer-transfer-funds/custom
 import { CustomerTransferHistoryComponent } from './customer-transfer-history/customer-transfer-history.component';
 import { CustomerChequebookRequestComponent } from './customer-chequebook-request/customer-chequebook-request.component';
 import { CustomerRegistrationComponent } from './customer-registration/customer-registration.component';
+import { AuthguardService } from './Shared/authguard.service';
 
 const routes: Routes = [
   {path: "", pathMatch: "full",redirectTo: "/customerlogin"},
   {path: "adminlogin", component: AdminLoginComponent},
-  {path: "adminupdatepassword", component: AdminUpdatePasswordComponent},
-  {path: "adminhome", component: AdminHomeComponent},
-  {path: "admincustomermanager", component: AdminCustomerManagerComponent},
-  {path: "adminchequebookauth", component: AdminChequeBookAuthComponent},
+  {path: "adminupdatepassword", component: AdminUpdatePasswordComponent,canActivate:[AuthguardService]},
+  {path: "adminhome", component: AdminHomeComponent,canActivate:[AuthguardService]},
+  {path: "admincustomermanager", component: AdminCustomerManagerComponent,canActivate:[AuthguardService]},
+  {path: "adminchequebookauth", component: AdminChequeBookAuthComponent,canActivate:[AuthguardService]},
   {path: "customerlogin", component: CustomerLoginComponent},
   {path: "customerupdatepassword", component: CustomerUpdatePasswordComponent},
   {path: "customerhome", component: CustomerHomeComponent},
@@ -41,7 +42,7 @@ const routes: Routes = [
   {path: "customertransferhistory", component: CustomerTransferHistoryComponent},
   {path: "customerchequebookrequest", component: CustomerChequebookRequestComponent},
   {path: "customerregistration", component: CustomerRegistrationComponent},
-  {path: "adminupdatepassword/:Username", component: AdminUpdatePasswordComponent}
+  {path: "adminupdatepassword/:Username", component: AdminUpdatePasswordComponent,canActivate:[AuthguardService]}
 
 ];
 
