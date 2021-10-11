@@ -40,7 +40,8 @@ const routes: Routes = [
   {path: "customertransferFunds", component: CustomerTransferFundsComponent},
   {path: "customertransferhistory", component: CustomerTransferHistoryComponent},
   {path: "customerchequebookrequest", component: CustomerChequebookRequestComponent},
-  {path: "customerregistration", component: CustomerRegistrationComponent}
+  {path: "customerregistration", component: CustomerRegistrationComponent},
+  {path: "adminupdatepassword/:Username", component: AdminUpdatePasswordComponent}
 
 ];
 

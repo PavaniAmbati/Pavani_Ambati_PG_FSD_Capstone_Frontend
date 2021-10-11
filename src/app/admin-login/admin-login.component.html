@@ -57,23 +57,24 @@
           <div class="mt-3"></div>
           <div class="form-group">
 
-            <input class="form-control" type="text" id="username" name="username" 
+            <input class="form-control" type="text" id="username" name="username" [(ngModel)]="users.Username"
               placeholder="user name">
           </div>
           <div class="form-group">
 
-            <input class="form-control" type="password" id="password" name="password" 
+            <input class="form-control" type="password" id="password" name="password" [(ngModel)]="users.Password"
               placeholder="Password">
           </div>
           
+          <h6 class="text-danger" *ngIf='invalidLogin'>{{errorMessage}}</h6>
           
           <div class = "row">
           <div class="col-md-6 text-center">
-            <button type="submit" class="btn btn-secondary btn-lg">Login to admin portal</button>
+            <button type="submit" class="btn btn-secondary btn-lg" (click)=handleLogin(users)>Login to admin portal</button>
           </div>
 
           <div class="col-md-6 text-center">
-            <button type="submit" class="btn btn-secondary btn-lg">Update Password</button>
+            <button type="submit" class="btn btn-secondary btn-lg" (click)=updatePassword(users)>Update Password</button>
           </div>
         </div>
 
