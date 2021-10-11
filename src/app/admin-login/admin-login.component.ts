@@ -47,8 +47,8 @@ export class AdminLoginComponent implements OnInit {
         this.invalidLogin = false;
         this.id = this.adminusers[i].id
         console.log(this.id)
-        //this.adminuser = [{"id": this.id, "Username": users.Username, "Password": users.Password}]
-        //localStorage.setItem('localUser',JSON.stringify(this.adminuser));
+        this.adminuser = [{"id": this.id, "Username": users.Username, "Password": users.Password}]
+        localStorage.setItem('localUser',JSON.stringify(this.adminuser));
         this.router.navigate(['/adminhome']);
     } else {
       console.log("invalid login");
