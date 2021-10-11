@@ -12,9 +12,23 @@ export interface customerInterface {
     country: String,
     postalcode: string,
     dateofbirth: string,
-    bankcardnumber: string,
     username: string,
     password: string,
     onlineaccountstatus: string
+    custaccounttab: [
+        {
+            accounttype: string,
+            accountnumber: string,
+            pinnumber: string
+            chequerequesttab: [
+                {
+                    accountnumber: string,
+                    chequetype: string,
+                    chequerequeststatus: string
+                }
+            ]
+        }
+    ]
+    
 
 }

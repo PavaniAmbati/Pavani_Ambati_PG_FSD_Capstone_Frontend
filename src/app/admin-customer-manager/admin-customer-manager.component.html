@@ -42,39 +42,41 @@
 
   </nav>
   <!--********Menu bar end*******-->
-  
+
   <div class="mt-5"></div>
 
- 
+
   <div class="col-md-3 table-bordered">
     <br>
-   
 
-        <li class="form-inline my-2 my-lg-0">
 
-          <h6>Select status</h6>
-          &nbsp; &nbsp;
-          <select name="Authorize" id="#" [(ngModel)]="customers.onlineaccountstatus" >
-            <option selected="selected" value=""></option>
-            <option value="wating for approval">waiting for approval</option>
-            <option value="active">active</option>
-            <option value="blocked">blocked</option>
-            </select> &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;
-            <button class="btn btn-secondary my-2 my-sm-0" name="submit" type="submit" (click)='filterCustomer(customers.onlineaccountstatus)' >Submit</button>
+    <li class="form-inline my-2 my-lg-0">
 
-        </li>
-    
-   
+      <h6>Select status</h6>
+      &nbsp; &nbsp;
+      <select name="Authorize" id="#" [(ngModel)]="customers.onlineaccountstatus">
+        <option selected="selected" value=""></option>
+        <option value="wating for approval">waiting for approval</option>
+        <option value="active">active</option>
+        <option value="blocked">blocked</option>
+      </select> &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;
+      <button class="btn btn-secondary my-2 my-sm-0" name="submit" type="submit"
+        (click)='filterCustomer(customers.onlineaccountstatus)'>Submit</button>
+
+    </li>
+
+
     <br>
-</div>
+  </div>
 
-<br><br>
+  <br><br>
 
   <div class="col-md-12">
 
     <table class="table table-bordered">
       <thead>
         <tr>
+          <th scope="col">Accountnumber</th>
           <th scope="col">First Name</th>
           <th scope="col">Last Name</th>
           <th scope="col">Phone Number</th>
@@ -86,29 +88,30 @@
 
       <tbody>
         <tr *ngFor="let customer of customers">
-          <td>{{customer.firstname}}</td>
-          <td>{{customer.lastname}}</td>
-          <td>{{customer.phonenumber}}</td>
-          <td>{{customer.email}}</td>
-          <td>{{customer.onlineaccountstatus}}</td>
-          <td>
-            <select name="Authorize" id="#" [(ngModel)]="cust.approval">
-              <option selected="selected" value=""></option>
-              <option value="activate">activate</option>
-              <option value="block">block</option>
-              </select> &nbsp;&nbsp;
-              <button class="btn btn-secondary my-2 my-sm-0" name="submit" type="submit" (click)='updateStatus(cust, customer)'>Submit</button>
-          </td>
-        
-          <!--<td><button class="btn btn-danger my-2 my-sm-0" name="edit"
-                    routerLink='/admineditproduct/{{categoryitem.id}}' type="submit">Edit</button>
-                &nbsp;  -->
 
-          <!-- &nbsp;
-                <button class="btn btn-danger" type="button" name="delete"
-                    (click)='deleteCatitem(categoryitem.id)'>Delete Product</button>
-            </td>-->
+          <td>
+        <tr *ngFor="let account of customer.custaccounttab">
+          <td>{{account.accountnumber}}</td>
         </tr>
+        </td>
+
+        <td>{{customer.firstname}}</td>
+        <td>{{customer.lastname}}</td>
+        <td>{{customer.phonenumber}}</td>
+        <td>{{customer.email}}</td>
+        <td>{{customer.onlineaccountstatus}}</td>
+        <td>
+          <select name="Authorize" id="#" [(ngModel)]="cust.approval">
+            <option selected="selected" value=""></option>
+            <option value="activate">activate</option>
+            <option value="block">block</option>
+          </select> &nbsp;&nbsp;
+          <button class="btn btn-secondary my-2 my-sm-0" name="submit" type="submit"
+            (click)='updateStatus(cust, customer)'>Submit</button>
+        </td>
+
+        </tr>
+
       </tbody>
     </table>
 

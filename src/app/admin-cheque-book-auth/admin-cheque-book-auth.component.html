@@ -57,7 +57,7 @@
             <option selected="selected" value=""></option>
             <option value="wating for approval">waiting for approval</option>
             <option value="approved">approved</option>
-            <option value="blocked">blocked</option>
+            <option value="declined">declined</option>
             </select> &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;
             <button class="btn btn-secondary my-2 my-sm-0" name="submit" type="submit" (click)='filterChequerequest(chequerequests.status)' >Submit</button>
 
@@ -74,6 +74,7 @@
     <table class="table table-bordered">
       <thead>
         <tr>
+          <th scope="col">Account Number</th>
           <th scope="col">Cheque Type</th>
           <th scope="col">Cheque Request Status</th>
         </tr>
@@ -81,6 +82,7 @@
 
       <tbody>
         <tr *ngFor="let chequerequest of chequerequests">
+          <td>{{chequerequest.accountnumber}}</td>
           <td>{{chequerequest.chequetype}}</td>
           <td>{{chequerequest.chequerequeststatus}}</td>
           <td>
@@ -91,16 +93,10 @@
               </select> &nbsp;&nbsp;
               <button class="btn btn-secondary my-2 my-sm-0" name="submit" type="submit" (click)='updateStatus(cheque, chequerequest)'>Submit</button>
           </td>
-        
-          <!--<td><button class="btn btn-danger my-2 my-sm-0" name="edit"
-                    routerLink='/admineditproduct/{{categoryitem.id}}' type="submit">Edit</button>
-                &nbsp;  -->
-
-          <!-- &nbsp;
-                <button class="btn btn-danger" type="button" name="delete"
-                    (click)='deleteCatitem(categoryitem.id)'>Delete Product</button>
-            </td>-->
         </tr>
+
+
+
       </tbody>
     </table>
 

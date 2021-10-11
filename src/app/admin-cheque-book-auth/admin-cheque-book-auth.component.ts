@@ -31,7 +31,9 @@ export class AdminChequeBookAuthComponent implements OnInit {
       this.chequerequests = data;
       console.log(this.chequerequests);
     })
-  }
+  } 
+
+
 
   //filter chequerequest list by status
   filterChequerequest(status: any) {
@@ -74,6 +76,6 @@ export class AdminChequeBookAuthComponent implements OnInit {
     }
 
 
-  }
+  } 
 
 }
