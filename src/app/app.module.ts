@@ -10,21 +10,20 @@ import { AdminCustomerManagerComponent } from './admin-customer-manager/admin-cu
 import { CustomerLoginComponent } from './customer-login/customer-login.component';
 import { CustomerUpdatePasswordComponent } from './customer-update-password/customer-update-password.component';
 import { CustomerHomeComponent } from './customer-home/customer-home.component';
-import { CustomerAccountsPageComponent } from './customer-accounts-page/customer-accounts-page.component';
-import { CustomerAccountSummaryComponent } from './customer-account-summary/customer-account-summary.component';
-import { CustomerAccountTransactionHistoryComponent } from './customer-account-transaction-history/customer-account-transaction-history.component';
-import { CustomerTransersPageComponent } from './customer-transers-page/customer-transers-page.component';
-import { CustomerTransferFundsComponent } from './customer-transfer-funds/customer-transfer-funds.component';
 import { CustomerTransferHistoryComponent } from './customer-transfer-history/customer-transfer-history.component';
-import { CustomerBillpaymentsPageComponent } from './customer-billpayments-page/customer-billpayments-page.component';
-import { CustomerBillpaymentComponent } from './customer-billpayment/customer-billpayment.component';
-import { CustomerBillpaymentHistoryComponent } from './customer-billpayment-history/customer-billpayment-history.component';
 import { CustomerChequebookRequestComponent } from './customer-chequebook-request/customer-chequebook-request.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { CustomerRegistrationComponent } from './customer-registration/customer-registration.component';
+import { CustomerAccountdetailsComponent } from './customer-accountdetails/customer-accountdetails.component';
+import { CustomerTransactionhistoryComponent } from './customer-transactionhistory/customer-transactionhistory.component';
+import { CustomerWithdrawalComponent } from './customer-withdrawal/customer-withdrawal.component';
+import { CustomerDepositComponent } from './customer-deposit/customer-deposit.component';
+import { CustomerMoneytransferComponent } from './customer-moneytransfer/customer-moneytransfer.component';
+import { CustomerChequebookRequesthistoryComponent } from './customer-chequebook-requesthistory/customer-chequebook-requesthistory.component';
+import { CustomerUsersetupComponent } from './customer-usersetup/customer-usersetup.component';
 
 @NgModule({
   declarations: [
@@ -37,19 +36,18 @@ import { CustomerRegistrationComponent } from './customer-registration/customer-
     CustomerLoginComponent,
     CustomerUpdatePasswordComponent,
     CustomerHomeComponent,
-    CustomerAccountsPageComponent,
-    CustomerAccountSummaryComponent,
-    CustomerAccountTransactionHistoryComponent,
-    CustomerTransersPageComponent,
-    CustomerTransferFundsComponent,
     CustomerTransferHistoryComponent,
-    CustomerBillpaymentsPageComponent,
-    CustomerBillpaymentComponent,
-    CustomerBillpaymentHistoryComponent,
     CustomerChequebookRequestComponent,
     FooterComponent,
     HeaderComponent,
-    CustomerRegistrationComponent
+    CustomerRegistrationComponent,
+    CustomerAccountdetailsComponent,
+    CustomerTransactionhistoryComponent,
+    CustomerWithdrawalComponent,
+    CustomerDepositComponent,
+    CustomerMoneytransferComponent,
+    CustomerChequebookRequesthistoryComponent,
+    CustomerUsersetupComponent
   ],
   imports: [
     BrowserModule,

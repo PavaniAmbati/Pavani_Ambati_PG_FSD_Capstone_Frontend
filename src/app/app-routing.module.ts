@@ -8,18 +8,16 @@ import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { CustomerLoginComponent } from './customer-login/customer-login.component';
 import { CustomerUpdatePasswordComponent } from './customer-update-password/customer-update-password.component';
 import { CustomerHomeComponent } from './customer-home/customer-home.component';
-import { CustomerAccountsPageComponent } from './customer-accounts-page/customer-accounts-page.component';
-import { CustomerAccountSummaryComponent } from './customer-account-summary/customer-account-summary.component';
-import { CustomerAccountTransactionHistoryComponent } from './customer-account-transaction-history/customer-account-transaction-history.component';
-import { CustomerBillpaymentsPageComponent } from './customer-billpayments-page/customer-billpayments-page.component';
-import { CustomerBillpaymentComponent } from './customer-billpayment/customer-billpayment.component';
-import { CustomerBillpaymentHistoryComponent } from './customer-billpayment-history/customer-billpayment-history.component';
-import { CustomerTransersPageComponent } from './customer-transers-page/customer-transers-page.component';
-import { CustomerTransferFundsComponent } from './customer-transfer-funds/customer-transfer-funds.component';
-import { CustomerTransferHistoryComponent } from './customer-transfer-history/customer-transfer-history.component';
 import { CustomerChequebookRequestComponent } from './customer-chequebook-request/customer-chequebook-request.component';
 import { CustomerRegistrationComponent } from './customer-registration/customer-registration.component';
 import { AuthguardService } from './Shared/authguard.service';
+import { CustomerWithdrawalComponent } from './customer-withdrawal/customer-withdrawal.component';
+import { CustomerDepositComponent } from './customer-deposit/customer-deposit.component';
+import { CustomerMoneytransferComponent } from './customer-moneytransfer/customer-moneytransfer.component';
+import { CustomerAccountdetailsComponent } from './customer-accountdetails/customer-accountdetails.component';
+import { CustomerTransactionhistoryComponent } from './customer-transactionhistory/customer-transactionhistory.component';
+import { CustomerChequebookRequesthistoryComponent } from './customer-chequebook-requesthistory/customer-chequebook-requesthistory.component';
+import { CustomerUsersetupComponent } from './customer-usersetup/customer-usersetup.component';
 
 const routes: Routes = [
   {path: "", pathMatch: "full",redirectTo: "/customerlogin"},
@@ -28,22 +26,19 @@ const routes: Routes = [
   {path: "adminhome", component: AdminHomeComponent,canActivate:[AuthguardService]},
   {path: "admincustomermanager", component: AdminCustomerManagerComponent,canActivate:[AuthguardService]},
   {path: "adminchequebookauth", component: AdminChequeBookAuthComponent,canActivate:[AuthguardService]},
+  {path: "adminupdatepassword/:Username", component: AdminUpdatePasswordComponent,canActivate:[AuthguardService]},
   {path: "customerlogin", component: CustomerLoginComponent},
+  {path: "customerregistration", component: CustomerRegistrationComponent},
+  {path: "customerusersetup", component: CustomerUsersetupComponent},
   {path: "customerupdatepassword", component: CustomerUpdatePasswordComponent},
   {path: "customerhome", component: CustomerHomeComponent},
-  {path: "customeraccountspage", component: CustomerAccountsPageComponent},
-  {path: "customeraccountsummary", component: CustomerAccountSummaryComponent},
-  {path: "customeraccounttransactionhistory", component: CustomerAccountTransactionHistoryComponent},
-  {path: "customerbillpaymentspage", component: CustomerBillpaymentsPageComponent},
-  {path: "customerbillpayment", component: CustomerBillpaymentComponent},
-  {path: "customerbillpaymenthistory", component: CustomerBillpaymentHistoryComponent},
-  {path: "customertransferpage", component: CustomerTransersPageComponent},
-  {path: "customertransferFunds", component: CustomerTransferFundsComponent},
-  {path: "customertransferhistory", component: CustomerTransferHistoryComponent},
+  {path: "customeraccountdetails", component: CustomerAccountdetailsComponent},
+  {path: "customerwithdrawal", component: CustomerWithdrawalComponent},
+  {path: "customerdeposit", component: CustomerDepositComponent},
+  {path: "customermoneytransfer", component: CustomerMoneytransferComponent},
+  {path: "customertransactionhistory", component: CustomerTransactionhistoryComponent},
   {path: "customerchequebookrequest", component: CustomerChequebookRequestComponent},
-  {path: "customerregistration", component: CustomerRegistrationComponent},
-  {path: "adminupdatepassword/:Username", component: AdminUpdatePasswordComponent,canActivate:[AuthguardService]}
-
+  {path: "customerchequebookrequesthistory", component: CustomerChequebookRequesthistoryComponent}
 ];
 
 @NgModule({
