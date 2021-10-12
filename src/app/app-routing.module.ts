@@ -18,6 +18,7 @@ import { CustomerAccountdetailsComponent } from './customer-accountdetails/custo
 import { CustomerTransactionhistoryComponent } from './customer-transactionhistory/customer-transactionhistory.component';
 import { CustomerChequebookRequesthistoryComponent } from './customer-chequebook-requesthistory/customer-chequebook-requesthistory.component';
 import { CustomerUsersetupComponent } from './customer-usersetup/customer-usersetup.component';
+import { CustomerauthguardService } from './Shared/customerauthguard.service';
 
 const routes: Routes = [
   {path: "", pathMatch: "full",redirectTo: "/customerlogin"},
@@ -30,7 +31,7 @@ const routes: Routes = [
   {path: "customerlogin", component: CustomerLoginComponent},
   {path: "customerregistration", component: CustomerRegistrationComponent},
   {path: "customerusersetup", component: CustomerUsersetupComponent},
-  {path: "customerupdatepassword", component: CustomerUpdatePasswordComponent},
+  {path: "customerupdatepassword", component: CustomerUpdatePasswordComponent,canActivate:[CustomerauthguardService]},
   {path: "customerupdatepassword/:Username", component: CustomerUpdatePasswordComponent},
   {path: "customerhome", component: CustomerHomeComponent},
   {path: "customeraccountdetails", component: CustomerAccountdetailsComponent},

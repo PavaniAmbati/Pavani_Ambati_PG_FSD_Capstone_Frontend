@@ -54,6 +54,11 @@ export class CustomerService {
     return this.http.put<customerInterface[]>(this.apiURL + '/customers/' + id, JSON.stringify(customeruser), this.httpOptions)
 
   }
+
+  isUserLoggedin(){
+    let user = localStorage.getItem('localUser');
+    return !(user === null);
+  }
  
       // Error handling 
   handleError(error: { error: { message: string; }; }) {

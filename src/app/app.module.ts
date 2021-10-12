@@ -25,6 +25,7 @@ import { CustomerMoneytransferComponent } from './customer-moneytransfer/custome
 import { CustomerChequebookRequesthistoryComponent } from './customer-chequebook-requesthistory/customer-chequebook-requesthistory.component';
 import { CustomerUsersetupComponent } from './customer-usersetup/customer-usersetup.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
