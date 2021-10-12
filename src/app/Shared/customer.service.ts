@@ -47,6 +47,13 @@ export class CustomerService {
       console.log(JSON.stringify(onlineaccountstatus));
      return this.http.put<customerInterface[]>(this.apiURL + '/customers/' + id, JSON.stringify(onlineaccountstatus), this.httpOptions)
     }
+
+  updateUser(id: any, customeruser: any): Observable<customerInterface[]> {
+    
+    console.log(JSON.stringify(customeruser));
+    return this.http.put<customerInterface[]>(this.apiURL + '/customers/' + id, JSON.stringify(customeruser), this.httpOptions)
+
+  }
  
       // Error handling 
   handleError(error: { error: { message: string; }; }) {

@@ -47,7 +47,25 @@ export class CustomerLoginComponent implements OnInit {
         this.invalidLogin = false;
         this.id = this.customerusers[i].custid
         console.log(this.id)
-        this.customeruser = [{"id": this.id, "Username": users.Username, "Password": users.Password}]
+        this.customeruser = 
+        [{
+        "id": this.id,
+        "firstname": this.customerusers[i].firstname,
+        "lastname": this.customerusers[i].lastname,
+        "phonenumber": this.customerusers[i].phonenumber,
+        "email": this.customerusers[i].email,
+        "housenumber": this.customerusers[i].housenumber,
+        "streetname": this.customerusers[i].streetname,
+        "city": this.customerusers[i].city,
+        "state": this.customerusers[i].state,
+        "country": this.customerusers[i].country,
+        "postalcode": this.customerusers[i].postalcode,
+        "dateofbirth": this.customerusers[i].dateofbirth,
+        "onlineaccountstatus": this.customerusers[i].onlineaccountstatus,
+        "username": this.customerusers[i].username,
+        "password": this.customerusers[i].password
+      }]
+      console.log(this.customeruser);
         localStorage.setItem('localUser',JSON.stringify(this.customeruser));
         this.router.navigate(['/customerhome']);
     } else {
@@ -57,5 +75,39 @@ export class CustomerLoginComponent implements OnInit {
       }
     }
   }
+
+  updatePassword(users: any) {
+  
+    for (let i = 0; i < this.customerusers.length; i++) {
+      if (this.customerusers[i].username === users.Username && this.customerusers[i].password === users.Password) {
+        this.invalidLogin = false;
+        this.id = this.customerusers[i].custid
+        console.log(this.id)
+        this.customeruser = 
+        [{
+        "id": this.id,
+        "firstname": this.customerusers[i].firstname,
+        "lastname": this.customerusers[i].lastname,
+        "phonenumber": this.customerusers[i].phonenumber,
+        "email": this.customerusers[i].email,
+        "housenumber": this.customerusers[i].housenumber,
+        "streetname": this.customerusers[i].streetname,
+        "city": this.customerusers[i].city,
+        "state": this.customerusers[i].state,
+        "country": this.customerusers[i].country,
+        "postalcode": this.customerusers[i].postalcode,
+        "dateofbirth": this.customerusers[i].dateofbirth,
+        "onlineaccountstatus": this.customerusers[i].onlineaccountstatus,
+        "username": this.customerusers[i].username,
+        "password": this.customerusers[i].password
+      }]
+      console.log(this.customeruser);
+        localStorage.setItem('localUser',JSON.stringify(this.customeruser));
+        this.router.navigate(['/customerupdatepassword/'+ users.Username]); 
+    } else {
+      this.invalidLogin = true;
+      }
+    }
+}
 
 }

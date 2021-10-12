@@ -31,6 +31,7 @@ const routes: Routes = [
   {path: "customerregistration", component: CustomerRegistrationComponent},
   {path: "customerusersetup", component: CustomerUsersetupComponent},
   {path: "customerupdatepassword", component: CustomerUpdatePasswordComponent},
+  {path: "customerupdatepassword/:Username", component: CustomerUpdatePasswordComponent},
   {path: "customerhome", component: CustomerHomeComponent},
   {path: "customeraccountdetails", component: CustomerAccountdetailsComponent},
   {path: "customerwithdrawal", component: CustomerWithdrawalComponent},
