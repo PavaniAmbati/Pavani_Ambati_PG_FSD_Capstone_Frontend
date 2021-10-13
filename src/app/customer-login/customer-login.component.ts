@@ -15,9 +15,11 @@ export class CustomerLoginComponent implements OnInit {
 
   public id!: string;
 
-  @Input() users = {Username: '', Password: ''}
+  @Input() users = { Username: '', Password: '' }
   errorMessage = 'Invalid Credentials. Try again.';
   invalidLogin = false;
+  Message = 'Online account is under approval process';
+  accountInactive = false;
 
   constructor(
     public restApi: CustomerService,
@@ -28,7 +30,7 @@ export class CustomerLoginComponent implements OnInit {
     this.loadcustomerusers();
   }
 
-  loadcustomerusers(){
+  loadcustomerusers() {
     return this.restApi.getCustomers().subscribe((data: {}) => {
       this.customerusers = data;
       console.log(this.customerusers);
@@ -37,77 +39,87 @@ export class CustomerLoginComponent implements OnInit {
   }
 
   handleLogin(users: any) {
-  
+
     //console.log(this.adminusers.length)
     for (let i = 0; i < this.customerusers.length; i++) {
       if (this.customerusers[i].username === users.Username && this.customerusers[i].password === users.Password) {
-        console.log(this.customerusers);
-        console.log(this.users);
-        console.log("valid login");
         this.invalidLogin = false;
-        this.id = this.customerusers[i].custid
-        console.log(this.id)
-        this.customeruser = 
-        [{
-        "id": this.id,
-        "firstname": this.customerusers[i].firstname,
-        "lastname": this.customerusers[i].lastname,
-        "phonenumber": this.customerusers[i].phonenumber,
-        "email": this.customerusers[i].email,
-        "housenumber": this.customerusers[i].housenumber,
-        "streetname": this.customerusers[i].streetname,
-        "city": this.customerusers[i].city,
-        "state": this.customerusers[i].state,
-        "country": this.customerusers[i].country,
-        "postalcode": this.customerusers[i].postalcode,
-        "dateofbirth": this.customerusers[i].dateofbirth,
-        "onlineaccountstatus": this.customerusers[i].onlineaccountstatus,
-        "username": this.customerusers[i].username,
-        "password": this.customerusers[i].password
-      }]
-      console.log(this.customeruser);
-        localStorage.setItem('localUser',JSON.stringify(this.customeruser));
-        this.router.navigate(['/customerhome']);
-    } else {
-      console.log("invalid login");
-      
-      this.invalidLogin = true;
+        if (this.customerusers[i].onlineaccountstatus === "active") {
+          this.accountInactive = false;
+
+
+          console.log(this.customerusers);
+          console.log(this.users);
+          console.log("valid login");
+          this.id = this.customerusers[i].custid
+          console.log(this.id)
+          this.customeruser =
+            [{
+              "id": this.id,
+              "firstname": this.customerusers[i].firstname,
+              "lastname": this.customerusers[i].lastname,
+              "phonenumber": this.customerusers[i].phonenumber,
+              "email": this.customerusers[i].email,
+              "housenumber": this.customerusers[i].housenumber,
+              "streetname": this.customerusers[i].streetname,
+              "city": this.customerusers[i].city,
+              "state": this.customerusers[i].state,
+              "country": this.customerusers[i].country,
+              "postalcode": this.customerusers[i].postalcode,
+              "dateofbirth": this.customerusers[i].dateofbirth,
+              "onlineaccountstatus": this.customerusers[i].onlineaccountstatus,
+              "username": this.customerusers[i].username,
+              "password": this.customerusers[i].password
+            }]
+          console.log(this.customeruser);
+          localStorage.setItem('localUser', JSON.stringify(this.customeruser));
+          this.router.navigate(['/customerhome']);
+        } else {
+          console.log("account inactive");
+          this.accountInactive = true;
+
+        }
+      }
+      else {
+        console.log("invalid login");
+
+        this.invalidLogin = true;
       }
     }
   }
 
   updatePassword(users: any) {
-  
+
     for (let i = 0; i < this.customerusers.length; i++) {
       if (this.customerusers[i].username === users.Username && this.customerusers[i].password === users.Password) {
         this.invalidLogin = false;
         this.id = this.customerusers[i].custid
         console.log(this.id)
-        this.customeruser = 
-        [{
-        "id": this.id,
-        "firstname": this.customerusers[i].firstname,
-        "lastname": this.customerusers[i].lastname,
-        "phonenumber": this.customerusers[i].phonenumber,
-        "email": this.customerusers[i].email,
-        "housenumber": this.customerusers[i].housenumber,
-        "streetname": this.customerusers[i].streetname,
-        "city": this.customerusers[i].city,
-        "state": this.customerusers[i].state,
-        "country": this.customerusers[i].country,
-        "postalcode": this.customerusers[i].postalcode,
-        "dateofbirth": this.customerusers[i].dateofbirth,
-        "onlineaccountstatus": this.customerusers[i].onlineaccountstatus,
-        "username": this.customerusers[i].username,
-        "password": this.customerusers[i].password
-      }]
-      console.log(this.customeruser);
-        localStorage.setItem('localUser',JSON.stringify(this.customeruser));
-        this.router.navigate(['/customerupdatepassword/'+ users.Username]); 
-    } else {
-      this.invalidLogin = true;
+        this.customeruser =
+          [{
+            "id": this.id,
+            "firstname": this.customerusers[i].firstname,
+            "lastname": this.customerusers[i].lastname,
+            "phonenumber": this.customerusers[i].phonenumber,
+            "email": this.customerusers[i].email,
+            "housenumber": this.customerusers[i].housenumber,
+            "streetname": this.customerusers[i].streetname,
+            "city": this.customerusers[i].city,
+            "state": this.customerusers[i].state,
+            "country": this.customerusers[i].country,
+            "postalcode": this.customerusers[i].postalcode,
+            "dateofbirth": this.customerusers[i].dateofbirth,
+            "onlineaccountstatus": this.customerusers[i].onlineaccountstatus,
+            "username": this.customerusers[i].username,
+            "password": this.customerusers[i].password
+          }]
+        console.log(this.customeruser);
+        localStorage.setItem('localUser', JSON.stringify(this.customeruser));
+        this.router.navigate(['/customerupdatepassword/' + users.Username]);
+      } else {
+        this.invalidLogin = true;
       }
     }
-}
+  }
 
 }

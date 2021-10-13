@@ -27,6 +27,17 @@ export class CustomeraccountService {
       )
   }
 
+  getAccountsbyCustid(id: string): Observable<customerAccountInterface[]>{
+
+    return this.http.get<customerAccountInterface[]>(this.apiURL + '/customeraccounts/custid/' + id)
+    .pipe(
+      retry(1),
+      catchError(this.handleError)
+    )
+
+  }
+
+
   handleError(error: { error: { message: string; }; }) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
