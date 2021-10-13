@@ -33,5 +33,18 @@ export class CustomerTransactionhistoryComponent implements OnInit {
 
   }
 
+   //filter customer transactions list by transaction type
+  filterTransaction(transtype: any) {
+    console.log(transtype);
+    return this.restApi.getTransactionsbytranstype(transtype).subscribe((data: {}) => {
+      this.customertransactions = data;
+      console.log(this.customertransactions);
+    }) 
+
+
+  }
+
+
+
 }
 
