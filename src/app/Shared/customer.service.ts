@@ -30,6 +30,15 @@ export class CustomerService {
         )
     }
 
+    getCustomersbyid(id: string): Observable<customerInterface[]>{
+      
+      return this.http.get<customerInterface[]>(this.apiURL + '/customers/id/' + id)
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      )
+  } 
+
     getCustomersbystatus(onlineaccountstatus: string): Observable<customerInterface[]>{
       
       return this.http.get<customerInterface[]>(this.apiURL + '/customers/' + onlineaccountstatus)

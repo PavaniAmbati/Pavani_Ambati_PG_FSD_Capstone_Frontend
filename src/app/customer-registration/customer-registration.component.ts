@@ -51,6 +51,7 @@ export class CustomerRegistrationComponent implements OnInit {
         "accounttype": this.customeraccounts[i].accounttype,
         "accountnumber": this.customeraccounts[i].accountnumber,
         "pinnumber": this.customeraccounts[i].pinnumber,
+        "custid": this.customeraccounts[i].custid
       }]
       console.log(this.customeraccount);
         localStorage.setItem('localAccount',JSON.stringify(this.customeraccount));
