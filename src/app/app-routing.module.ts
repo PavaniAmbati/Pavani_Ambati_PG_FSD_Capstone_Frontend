@@ -40,7 +40,12 @@ const routes: Routes = [
   {path: "customermoneytransfer", component: CustomerMoneytransferComponent},
   {path: "customertransactionhistory", component: CustomerTransactionhistoryComponent},
   {path: "customerchequebookrequest", component: CustomerChequebookRequestComponent},
-  {path: "customerchequebookrequesthistory", component: CustomerChequebookRequesthistoryComponent}
+  {path: "customerchequebookrequesthistory", component: CustomerChequebookRequesthistoryComponent},
+  {path: "customertransactionhistory/:Id", component:CustomerTransactionhistoryComponent},
+  {path: "customerwithdrawal/:Id", component:CustomerWithdrawalComponent},
+  {path: "customerdeposit/:Id", component:CustomerDepositComponent},
+  {path: "customermoneytransfer/:Id", component:CustomerMoneytransferComponent},
+  {path: "customerchequebookrequest/:Id", component: CustomerChequebookRequestComponent},
 ];
 
 @NgModule({

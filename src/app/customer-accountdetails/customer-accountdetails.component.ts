@@ -39,6 +39,12 @@ export class CustomerAccountdetailsComponent implements OnInit {
 
   }
 
+  transactionhistory(account: any){
+    console.log(account.accountid)
+    this.router.navigate(['/customertransactionhistory/' + account.accountid]);
+
+  }
+
 
 
 }
