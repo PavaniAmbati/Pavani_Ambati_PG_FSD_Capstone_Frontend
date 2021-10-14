@@ -16,53 +16,97 @@
 </head>
 
 <style>
-    .logo {
-      height: 100px;
-      padding-right: 15px;
-      padding-left: 5px;
-    }
-  </style>
+  .logo {
+    height: 100px;
+    padding-right: 15px;
+    padding-left: 5px;
+  }
+</style>
 
 <body>
-<!--********Menu bar start*******-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" routerLink="/customerlogin" href="#"><img src='../../assets/img/logo.PNG'
-          class="img-responsive logo"></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+  <!--********Menu bar start*******-->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" routerLink="/customerlogin" href="#"><img src='../../assets/img/logo.PNG'
+        class="img-responsive logo"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link text-secondary" routerLink="/customerlogin" href="#"><b>Home </b><span
-                class="sr-only">(current)</span></a>
-          </li>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link text-secondary" routerLink="/customerlogin" href="#"><b>Home </b><span
+              class="sr-only">(current)</span></a>
+        </li>
 
-          <li class="nav-item active">
-            <a class="nav-link text-dark" href="#" routerLink='/customeraccountspage'>Accounts</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link text-dark" href="#" routerLink='/customerbillpaymentspage'>BillPayments</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link text-dark" href="#" routerLink='/customertransferpage'>Transfers</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link text-dark" href="#" routerLink='/customerchequebookrequest'>ChequeBookRequest</a>
-          </li>
+        <li class="nav-item active">
+          <a class="nav-link text-dark" href="#" routerLink='/customeraccountdetails'>AccountDetails</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link text-dark" href="#" routerLink='/customertransactionhistory'>Transaction History</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link text-dark" href="#" routerLink='/customerwithdrawal'>Withdrawals</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link text-dark" href="#" routerLink='/customerdeposit'>Deposits</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link text-dark" href="#" routerLink='/customermoneytransfer'>Money Transfers</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link text-dark" href="#" routerLink='/customerchequebookrequest'>ChequeBook Requests</a>
+        </li>
 
 
-          
 
-        </ul>
+
+      </ul>
     </div>
 
-    </nav>
+  </nav>
   <!--********Menu bar end*******-->
+  <div class="mt-5"></div>
+
+  <form class="form-inline my-2 my-lg-0">
+      <h3><a class="nav-link text-secondary">Customer Portal - Cheque Book Request form</a></h3>
+  </form>
+  <br>
+ 
+    <div class="container">
+
+      <div class="row">
+
+        <div class="col-md-6 mt-5 table-bordered ">
+          <h5></h5>
+
+         
+
+          <!--<small class="form-text text-muted">Access the portal to view account details, update profile, view sales orders and more</small>-->
+        
+          <div class="form-group">
+
+            <select name="Authorize" id="#" [(ngModel)]="chequerequests.chequetype">
+              <option value="100 Cheques">100 Cheques</option>
+              <option value="50 Cheques">50 Cheques</option>
+              <option value="25 Cheques">25 Cheques</option>
+          </select> 
+         
+          &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+            <button type="submit" class="btn btn-secondary " (click)='createChequerequest(chequerequests.chequetype)'
+            >Submit Cheque Request</button>
 
 
+        </div>
+        <!--form column ends  routerLink = "/adminhome"-->
+
+      </div>
+    </div>
+    </div>
+
+  
+    <br><br><br><br><br>
 
 
 
@@ -80,11 +124,9 @@
   integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
   crossorigin="anonymous"></script>
 
-</body>
 
 <div class="mt-5"></div>
 
-</html>
 
 
 

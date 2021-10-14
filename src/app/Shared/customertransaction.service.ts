@@ -32,7 +32,7 @@ export class CustomertransactionService {
 
   getTransactionsbytranstype(transtype: any): Observable<customerTransactionInterface[]> {
 
-    return this.http.get<customerTransactionInterface[]>(this.apiURL + '/customertransactions/transtype/' + transtype)
+    return this.http.get<customerTransactionInterface[]>(this.apiURL + '/customertransactions/' + transtype)
     .pipe(
       retry(1),
       catchError(this.handleError)

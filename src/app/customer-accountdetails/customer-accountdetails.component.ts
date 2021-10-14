@@ -39,12 +39,38 @@ export class CustomerAccountdetailsComponent implements OnInit {
 
   }
 
-  transactionhistory(account: any){
+  transactionhistory(account: any) {
     console.log(account.accountid)
     this.router.navigate(['/customertransactionhistory/' + account.accountid]);
 
   }
 
+  withdrawal(account: any) {
+    console.log(account.accountid)
+    this.router.navigate(['/customerwithdrawal/' + account.accountid]);
+
+  }
+
+  deposit(account: any) {
+    console.log(account.accountid)
+    this.router.navigate(['/customerdeposit/' + account.accountid]);
+
+  }
+
+  moneytransfer(account: any) {
+    console.log(account.accountid)
+    this.router.navigate(['/customermoneytransfer/' + account.accountid]);
+
+  }
+
+  chequerequest(account: any) {
+    console.log(account.accountid)
+    this.router.navigate(['/customerchequebookrequest/' + account.accountid + '/' + account.accountnumber]);
+
+  }
+
+
+  
 
 
 }

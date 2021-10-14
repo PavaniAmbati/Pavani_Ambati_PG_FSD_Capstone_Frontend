@@ -28,25 +28,28 @@ export class ChequerequestService {
       )
   }
 
-  getChequerequestsbystatus(approvalstatus: string): Observable<chequerequestInterface[]>{
-    
+  getChequerequestsbystatus(approvalstatus: string): Observable<chequerequestInterface[]> {
+
     return this.http.get<chequerequestInterface[]>(this.apiURL + '/chequerequests/' + approvalstatus)
-    .pipe(
-      retry(1),
-      catchError(this.handleError)
-    )
-} 
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      )
+  }
 
 
   // HttpClient API put() method => Update customer
   //updateCustomer(){}
   //>
-updateChequerequest(id: any, approvalstatus: any): Observable<chequerequestInterface[]>{
+  updateChequerequest(id: any, approvalstatus: any): Observable<chequerequestInterface[]> {
     console.log(JSON.stringify(approvalstatus));
-   return this.http.put<chequerequestInterface[]>(this.apiURL + '/chequerequests/' + id, JSON.stringify(approvalstatus), this.httpOptions)
+    return this.http.put<chequerequestInterface[]>(this.apiURL + '/chequerequests/' + id, JSON.stringify(approvalstatus), this.httpOptions)
   }
 
-
+  createRequest(chequerequest: any): Observable<chequerequestInterface[]> {
+    return this.http.post<chequerequestInterface[]>(this.apiURL + '/chequerequests', JSON.stringify(chequerequest), this.httpOptions)
+   
+  }
 
   // Error handling 
   handleError(error: { error: { message: string; }; }) {
