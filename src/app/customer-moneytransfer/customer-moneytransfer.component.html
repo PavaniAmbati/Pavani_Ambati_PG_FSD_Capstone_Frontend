@@ -90,26 +90,27 @@
 
           <div class="form-group">
             <label>From Accountnumber:</label>
-            <input class="form-control" type="moneytransfer" name="moneytransfer" readonly>
+            <input class="form-control" type="moneytransfer" name="moneytransfer" value={{accnum}} readonly>
           </div>
 
           <div class="form-group">
             <label>To Accountnumber:</label>
-            <input class="form-control" type="moneytransfer" name="moneytransfer" placeholder="Enter account number">
+            <input class="form-control" type="moneytransfer" name="moneytransfer" placeholder="Enter account number"
+            [(ngModel)]="moneytransfers.accountnumber">
           </div>
 
           <div class="form-group">
             <label>Amount:</label>
             <input class="form-control" type="moneytransfer" name="moneytransfer"
-              placeholder="Enter amount to transfer">
+              placeholder="Enter amount to transfer" [(ngModel)]="moneytransfers.transamount">
           </div>
 
 
-          <button type="submit" class="btn btn-secondary ">Transfer Money</button>
+          <button type="submit" class="btn btn-secondary " (click)='createtransaction(moneytransfers.transamount); updateaccountbyid(); getToaccountbynum(moneytransfers.accountnumber); createTotransaction(moneytransfers); updateToaccountbyid()'>Transfer Money</button>
 
 
         </div>
-        <!--form column ends  routerLink = "/adminhome" (click)='createChequerequest(chequerequests.chequetype)' [(ngModel)]="users.Newpassword"-->
+        <!--form column ends  routerLink = "/adminhome" (click)='createChequerequest(chequerequests.chequetype)' [(ngModel)]="users.Newpassword"  -->
 
       </div>
     </div>

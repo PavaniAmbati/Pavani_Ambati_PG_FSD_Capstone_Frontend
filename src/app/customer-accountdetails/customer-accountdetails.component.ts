@@ -82,7 +82,18 @@ export class CustomerAccountdetailsComponent implements OnInit {
 
   moneytransfer(account: any) {
     console.log(account.accountid)
-    this.router.navigate(['/customermoneytransfer/' + account.accountid + '/' + account.accountnumber + '/' + account.totalamount]);
+
+    this.customeraccount = {
+        "accountid":account.accountid,
+        "accountnumber": account.accountnumber,
+        "accounttype": account.accounttype,
+        "custid": account.custid,
+        "pinnumber": account.pinnumber,
+        "totalamount": account.totalamount
+      }
+      console.log(this.customeraccount);
+      localStorage.setItem('localaccount', JSON.stringify(this.customeraccount));
+    this.router.navigate(['/customermoneytransfer/' + account.accountid + '/' + account.accountnumber]);
 
   }
 

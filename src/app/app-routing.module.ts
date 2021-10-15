@@ -44,7 +44,7 @@ const routes: Routes = [
   {path: "customertransactionhistory/:Id", component:CustomerTransactionhistoryComponent},
   //{path: "customerwithdrawal/:Id/:Totalamount", component:CustomerWithdrawalComponent},
   //{path: "customerdeposit/:Id/:Totalamount", component:CustomerDepositComponent},
-  {path: "customermoneytransfer/:Id/:Totalamount/:Accountnumber", component:CustomerMoneytransferComponent},
+  {path: "customermoneytransfer/:Id/:Accountnumber", component:CustomerMoneytransferComponent},
   {path: "customerchequebookrequest/:Id/:Accountnumber", component: CustomerChequebookRequestComponent},
 ];
 

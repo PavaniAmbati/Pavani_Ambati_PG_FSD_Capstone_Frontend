@@ -47,6 +47,16 @@ export class CustomeraccountService {
 
   }
 
+  
+  getAccountbynum(accountnumber: string): Observable<customerAccountInterface[]>{
+
+    return this.http.get<customerAccountInterface[]>(this.apiURL + '/customeraccounts/accountnumber/' + accountnumber)
+    .pipe(
+      retry(1),
+      catchError(this.handleError)
+    )
+
+  }
 
   updateAccountbyid(id: any, custaccount: any): Observable<customerAccountInterface[]> {
     console.log(JSON.stringify(custaccount));
