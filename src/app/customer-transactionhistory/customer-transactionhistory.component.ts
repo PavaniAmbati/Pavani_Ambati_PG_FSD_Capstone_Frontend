@@ -47,4 +47,3 @@ export class CustomerTransactionhistoryComponent implements OnInit {
 
 
 }
-

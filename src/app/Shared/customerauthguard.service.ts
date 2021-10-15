@@ -14,7 +14,7 @@ export class CustomerauthguardService {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     if (this.customerService.isUserLoggedin())
           return true;
-      this.router.navigate(['/adminlogin']);
+      this.router.navigate(['/customerlogin']);
            
       return false;    
     

@@ -10,7 +10,6 @@ import { AdminCustomerManagerComponent } from './admin-customer-manager/admin-cu
 import { CustomerLoginComponent } from './customer-login/customer-login.component';
 import { CustomerUpdatePasswordComponent } from './customer-update-password/customer-update-password.component';
 import { CustomerHomeComponent } from './customer-home/customer-home.component';
-import { CustomerTransferHistoryComponent } from './customer-transfer-history/customer-transfer-history.component';
 import { CustomerChequebookRequestComponent } from './customer-chequebook-request/customer-chequebook-request.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
@@ -37,7 +36,6 @@ import { CustomerUsersetupComponent } from './customer-usersetup/customer-userse
     CustomerLoginComponent,
     CustomerUpdatePasswordComponent,
     CustomerHomeComponent,
-    CustomerTransferHistoryComponent,
     CustomerChequebookRequestComponent,
     FooterComponent,
     HeaderComponent,
