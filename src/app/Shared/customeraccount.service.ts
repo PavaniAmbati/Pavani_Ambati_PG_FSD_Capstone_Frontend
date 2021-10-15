@@ -37,6 +37,22 @@ export class CustomeraccountService {
 
   }
 
+  getAccountbyid(accid: string): Observable<customerAccountInterface[]>{
+
+    return this.http.get<customerAccountInterface[]>(this.apiURL + '/customeraccounts/' + accid)
+    .pipe(
+      retry(1),
+      catchError(this.handleError)
+    )
+
+  }
+
+
+  updateAccountbyid(id: any, custaccount: any): Observable<customerAccountInterface[]> {
+    console.log(JSON.stringify(custaccount));
+    return this.http.put<customerAccountInterface[]>(this.apiURL + '/customeraccounts/' + id, JSON.stringify(custaccount), this.httpOptions)
+  }
+
 
   handleError(error: { error: { message: string; }; }) {
     let errorMessage = '';

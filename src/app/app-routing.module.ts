@@ -42,9 +42,9 @@ const routes: Routes = [
   {path: "customerchequebookrequest", component: CustomerChequebookRequestComponent},
   {path: "customerchequebookrequesthistory", component: CustomerChequebookRequesthistoryComponent},
   {path: "customertransactionhistory/:Id", component:CustomerTransactionhistoryComponent},
-  {path: "customerwithdrawal/:Id", component:CustomerWithdrawalComponent},
-  {path: "customerdeposit/:Id", component:CustomerDepositComponent},
-  {path: "customermoneytransfer/:Id", component:CustomerMoneytransferComponent},
+  //{path: "customerwithdrawal/:Id/:Totalamount", component:CustomerWithdrawalComponent},
+  //{path: "customerdeposit/:Id/:Totalamount", component:CustomerDepositComponent},
+  {path: "customermoneytransfer/:Id/:Totalamount/:Accountnumber", component:CustomerMoneytransferComponent},
   {path: "customerchequebookrequest/:Id/:Accountnumber", component: CustomerChequebookRequestComponent},
 ];
 

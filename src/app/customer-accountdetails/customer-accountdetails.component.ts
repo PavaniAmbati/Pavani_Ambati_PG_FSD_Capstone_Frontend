@@ -11,6 +11,7 @@ import { CustomeraccountService } from '../Shared/customeraccount.service';
 export class CustomerAccountdetailsComponent implements OnInit {
 
   public customeraccounts: any = [];
+  public customeraccount: any = [];
   public localaccount: any = [];
   public id!: string;
 
@@ -47,19 +48,41 @@ export class CustomerAccountdetailsComponent implements OnInit {
 
   withdrawal(account: any) {
     console.log(account.accountid)
-    this.router.navigate(['/customerwithdrawal/' + account.accountid]);
+
+    this.customeraccount = {
+        "accountid":account.accountid,
+        "accountnumber": account.accountnumber,
+        "accounttype": account.accounttype,
+        "custid": account.custid,
+        "pinnumber": account.pinnumber,
+        "totalamount": account.totalamount
+      }
+      console.log(this.customeraccount);
+      localStorage.setItem('localaccount', JSON.stringify(this.customeraccount));
+    this.router.navigate(['/customerwithdrawal/']);
 
   }
 
   deposit(account: any) {
     console.log(account.accountid)
-    this.router.navigate(['/customerdeposit/' + account.accountid]);
 
+    this.customeraccount = {
+        "accountid":account.accountid,
+        "accountnumber": account.accountnumber,
+        "accounttype": account.accounttype,
+        "custid": account.custid,
+        "pinnumber": account.pinnumber,
+        "totalamount": account.totalamount
+      }
+      console.log(this.customeraccount);
+      localStorage.setItem('localaccount', JSON.stringify(this.customeraccount));
+    this.router.navigate(['/customerdeposit/']);
+    
   }
 
   moneytransfer(account: any) {
     console.log(account.accountid)
-    this.router.navigate(['/customermoneytransfer/' + account.accountid]);
+    this.router.navigate(['/customermoneytransfer/' + account.accountid + '/' + account.accountnumber + '/' + account.totalamount]);
 
   }
 

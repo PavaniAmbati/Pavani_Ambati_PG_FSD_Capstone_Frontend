@@ -92,11 +92,11 @@
 
                     <div class="form-group">
                         <input class="form-control" type="depositamount" name="depositamount"
-                            placeholder="Enter amount to deposit">
+                            placeholder="Enter amount to deposit" [(ngModel)]="deposits.transamount">
                     </div>
 
 
-                    <button type="submit" class="btn btn-secondary ">Deposit Amount</button>
+                    <button type="submit" class="btn btn-secondary " (click)='createtransaction(deposits.transamount); updateaccountbyid()'>Deposit Amount</button>
 
 
                 </div>

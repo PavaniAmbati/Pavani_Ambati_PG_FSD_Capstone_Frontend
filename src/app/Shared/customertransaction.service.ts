@@ -40,6 +40,11 @@ export class CustomertransactionService {
 
   }
 
+  createTransaction(withdrawal: any): Observable<customerTransactionInterface[]> {
+    return this.http.post<customerTransactionInterface[]>(this.apiURL + '/customertransactions', JSON.stringify(withdrawal), this.httpOptions)
+   
+  }
+
 
   handleError(error: { error: { message: string; }; }) {
     let errorMessage = '';
