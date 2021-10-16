@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-customer-home',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomerHomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public router: Router
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  logout(){
+    localStorage.removeItem('localUser');
+    localStorage.removeItem('localaccount');
+    this.router.navigate(['/customerlogin']);
+
   }
 
 }

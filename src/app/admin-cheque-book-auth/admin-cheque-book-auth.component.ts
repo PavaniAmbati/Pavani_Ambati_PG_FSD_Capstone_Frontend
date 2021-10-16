@@ -78,4 +78,11 @@ export class AdminChequeBookAuthComponent implements OnInit {
 
   } 
 
+  logout(){
+    localStorage.removeItem('localUser');
+    //localStorage.removeItem('localUser');
+    this.router.navigate(['/adminlogin']);
+
+  }
+
 }

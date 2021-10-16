@@ -44,6 +44,12 @@ export class CustomerTransactionhistoryComponent implements OnInit {
 
   }
 
+  logout(){
+    localStorage.removeItem('localUser');
+    localStorage.removeItem('localaccount');
+    this.router.navigate(['/customerlogin']);
+
+  }
 
 
 }

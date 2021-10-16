@@ -120,6 +120,13 @@ export class CustomerWithdrawalComponent implements OnInit {
       })
 
   }
+
+  logout(){
+    localStorage.removeItem('localUser');
+    localStorage.removeItem('localaccount');
+    this.router.navigate(['/customerlogin']);
+
+  }
 }
 
 

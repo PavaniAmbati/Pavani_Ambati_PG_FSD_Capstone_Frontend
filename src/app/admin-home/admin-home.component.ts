@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-home',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminHomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public router: Router
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  
+  logout(){
+    localStorage.removeItem('localUser');
+    //localStorage.removeItem('localUser');
+    this.router.navigate(['/adminlogin']);
+
   }
 
 }

@@ -58,12 +58,12 @@
         <li class="nav-item active">
           <a class="nav-link text-dark" href="#" routerLink='/customeraccountdetails'>ChequeBook Requests</a>
         </li>
-
-
-
-
       </ul>
     </div>
+    <ul class="nav navbar-nav navbar-right">
+      <li> <button type="button" class="btn btn-secondary my-2 my-sm-0 text-warning" (click)="logout()">Logout</button>
+      </li>
+    </ul>
 
   </nav>
   <!--********Menu bar end*******-->
@@ -94,28 +94,32 @@
 
           <td>
             &nbsp;&nbsp;
-            <button class="btn btn-secondary my-2 my-sm-0" name="submit" type="submit" (click)=transactionhistory(account)
-            >Transaction History</button>
+            <button class="btn btn-secondary my-2 my-sm-0" name="submit" type="submit"
+              (click)=transactionhistory(account)>Transaction History</button>
           </td>
 
           <td>
             &nbsp;&nbsp;
-            <button class="btn btn-secondary my-2 my-sm-0" name="submit" type="submit" (click)=withdrawal(account)>Withdrawals</button>
+            <button class="btn btn-secondary my-2 my-sm-0" name="submit" type="submit"
+              (click)=withdrawal(account)>Withdrawals</button>
           </td>
 
           <td>
             &nbsp;&nbsp;
-            <button class="btn btn-secondary my-2 my-sm-0" name="submit" type="submit" (click)=deposit(account)>Deposits</button>
+            <button class="btn btn-secondary my-2 my-sm-0" name="submit" type="submit"
+              (click)=deposit(account)>Deposits</button>
           </td>
 
           <td>
             &nbsp;&nbsp;
-            <button class="btn btn-secondary my-2 my-sm-0" name="submit" type="submit" (click)=moneytransfer(account)>Money Transfers</button>
+            <button class="btn btn-secondary my-2 my-sm-0" name="submit" type="submit"
+              (click)=moneytransfer(account)>Money Transfers</button>
           </td>
 
           <td>
-          &nbsp;&nbsp;
-          <button class="btn btn-secondary my-2 my-sm-0" name="submit" type="submit" (click)=chequerequest(account)>Cheque Requests</button>
+            &nbsp;&nbsp;
+            <button class="btn btn-secondary my-2 my-sm-0" name="submit" type="submit"
+              (click)=chequerequest(account)>Cheque Requests</button>
           </td>
 
 
