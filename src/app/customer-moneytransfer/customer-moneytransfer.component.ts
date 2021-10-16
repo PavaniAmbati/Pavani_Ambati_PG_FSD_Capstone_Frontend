@@ -46,6 +46,7 @@ export class CustomerMoneytransferComponent implements OnInit {
     this.getaccountbyid();
   }
 
+  //get from account by account id
   getaccountbyid() {
 
     this.localaccount = JSON.parse(localStorage.getItem('localaccount')!);
@@ -62,7 +63,7 @@ export class CustomerMoneytransferComponent implements OnInit {
         
   }
 
-
+//save from account by accountid
   updateaccountbyid(moneytransfers: any) {
     //console.log(this.accid);
     this.totalamount = this.custaccounts.totalamount;
@@ -95,7 +96,7 @@ export class CustomerMoneytransferComponent implements OnInit {
 
   }
 
-
+//save moneytransfer transaction for from account
   createtransaction(moneytransfers: any) {
 
     //console.log(transamount);
@@ -127,7 +128,7 @@ export class CustomerMoneytransferComponent implements OnInit {
 
   }
 
-
+//get to account details by account number
   getToaccountbynum(toaccountnumber: any) {
 
      console.log(toaccountnumber);
@@ -155,7 +156,7 @@ export class CustomerMoneytransferComponent implements OnInit {
     
   }
 
-
+//save money transaction trasaction for 'to account'
   createTotransaction(moneytransfers: any) {
 
     this.localToaccount = JSON.parse(localStorage.getItem('localToaccount')!);
@@ -190,6 +191,7 @@ export class CustomerMoneytransferComponent implements OnInit {
 
   }
 
+  //update account for 'to account'
   updateToaccountbyid(moneytransfers: any) {
     this.localToaccount = JSON.parse(localStorage.getItem('localToaccount')!);
     this.totalamount = this.localToaccount.totalamount;

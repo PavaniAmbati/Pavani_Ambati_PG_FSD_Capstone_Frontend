@@ -30,6 +30,7 @@ export class CustomerLoginComponent implements OnInit {
     this.loadcustomerusers();
   }
 
+  //load all customer users
   loadcustomerusers() {
     return this.restApi.getCustomers().subscribe((data: {}) => {
       this.customerusers = data;
@@ -38,6 +39,7 @@ export class CustomerLoginComponent implements OnInit {
 
   }
 
+  //validate username and password for login
   handleLogin(users: any) {
 
     if (users.Username === '') {
@@ -96,6 +98,7 @@ export class CustomerLoginComponent implements OnInit {
     }
   }
 
+  //validate username and password for password update
   updatePassword(users: any) {
     if (users.Username === '') {
       this.invalidLogin = true;

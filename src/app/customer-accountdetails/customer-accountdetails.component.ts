@@ -24,6 +24,7 @@ export class CustomerAccountdetailsComponent implements OnInit {
     this.loadaccountsbycustid();
   }
 
+  //load customer account by custid
   loadaccountsbycustid() {
 
     this.localaccount = JSON.parse(localStorage.getItem('localUser')!);
@@ -40,12 +41,14 @@ export class CustomerAccountdetailsComponent implements OnInit {
 
   }
 
+  //redirect to transaction history page
   transactionhistory(account: any) {
     console.log(account.accountid)
     this.router.navigate(['/customertransactionhistory/' + account.accountid]);
 
   }
 
+  //save selected customer account in local storage and redirect to withdrawal page
   withdrawal(account: any) {
     console.log(account.accountid)
 
@@ -63,6 +66,7 @@ export class CustomerAccountdetailsComponent implements OnInit {
 
   }
 
+  //save selected customer account in local storage and redirect to deposit page
   deposit(account: any) {
     console.log(account.accountid)
 
@@ -80,6 +84,7 @@ export class CustomerAccountdetailsComponent implements OnInit {
     
   }
 
+  //save selected customer account in local storage and redirect to money transfer page
   moneytransfer(account: any) {
     console.log(account.accountid)
 
@@ -97,6 +102,7 @@ export class CustomerAccountdetailsComponent implements OnInit {
 
   }
 
+  //redirect to cheque request page
   chequerequest(account: any) {
     console.log(account.accountid)
     this.router.navigate(['/customerchequebookrequest/' + account.accountid + '/' + account.accountnumber]);

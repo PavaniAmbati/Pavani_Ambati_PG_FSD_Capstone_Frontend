@@ -30,6 +30,7 @@ export class CustomerUsersetupComponent implements OnInit {
 
   }
 
+  //load customer by id
   loadcustomerbyid(users: any) {
 
     this.localaccount = JSON.parse(localStorage.getItem('localAccount')!);
@@ -48,7 +49,7 @@ export class CustomerUsersetupComponent implements OnInit {
 
 
 
-
+//create new user login if new and repeat password matches
   createUser(users: any) {
 
 

@@ -46,7 +46,7 @@ export class CustomerWithdrawalComponent implements OnInit {
     this.getaccountbyid();
   }
 
-
+//load account by id
   getaccountbyid() {
 
     this.localaccount = JSON.parse(localStorage.getItem('localaccount')!);
@@ -63,6 +63,7 @@ export class CustomerWithdrawalComponent implements OnInit {
         
   }
 
+  //update account by id
   updateaccountbyid() {
     console.log(this.accid);
     this.custaccount = {
@@ -95,7 +96,7 @@ export class CustomerWithdrawalComponent implements OnInit {
 
   }
 
-
+//save transaction 
   createtransaction(transamount: any) {
 
     console.log(transamount);

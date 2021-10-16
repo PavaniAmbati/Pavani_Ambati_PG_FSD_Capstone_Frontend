@@ -28,6 +28,7 @@ export class AdminUpdatePasswordComponent implements OnInit {
     this.loadadminusers();
   }
 
+  //load all adminusers
   loadadminusers() {
     return this.restApi.getUsers().subscribe((data: {}) => {
       this.adminusers = data;
@@ -36,6 +37,7 @@ export class AdminUpdatePasswordComponent implements OnInit {
 
   }
 
+  //update password if new and repeat password matches
   updatePassword(users: any) {
 
     if (users.Newpassword === users.Repeatpassword) {

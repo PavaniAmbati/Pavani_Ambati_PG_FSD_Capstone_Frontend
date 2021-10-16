@@ -36,6 +36,7 @@ export class AdminLoginComponent implements OnInit {
 
   }
 
+  //validate username and password entered to login
   handleLogin(users: any) {
 
     if (users.Username === '') {
@@ -66,6 +67,7 @@ export class AdminLoginComponent implements OnInit {
     }
   }
 
+   //validate username and password entered to update password
   updatePassword(users: any) {
     if (users.Username === '') {
       this.invalidLogin = true;

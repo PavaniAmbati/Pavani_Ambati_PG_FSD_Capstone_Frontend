@@ -30,6 +30,7 @@ export class CustomerUpdatePasswordComponent implements OnInit {
     this.loadcustomerusers();
   }
 
+  //load all users
   loadcustomerusers() {
     return this.restApi.getCustomers().subscribe((data: {}) => {
       this.customerusers = data;
@@ -38,6 +39,7 @@ export class CustomerUpdatePasswordComponent implements OnInit {
 
   }
 
+  //update password if new and repeat password matches
   updatePassword(users: any) {
 
     if (users.Newpassword === users.Repeatpassword) {

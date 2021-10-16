@@ -23,7 +23,7 @@ export class CustomerTransactionhistoryComponent implements OnInit {
     this.loadtransactionsbyaccid();
   }
 
-
+//load all transaction by account id
   loadtransactionsbyaccid() {
 
     return this.restApi.getTransactionsbyAccid(this.id).subscribe((data: {}) => {

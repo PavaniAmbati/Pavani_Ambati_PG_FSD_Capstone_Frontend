@@ -40,6 +40,7 @@ export class CustomerRegistrationComponent implements OnInit {
 
   }
 
+  //validate bank account number and pinnumber to create new user login
   handleLogin(users: any) {
   
     //console.log(this.adminusers.length)
@@ -70,6 +71,7 @@ export class CustomerRegistrationComponent implements OnInit {
     }
   }
 
+  //get customers by id
   getcustomerbyid() {
 
    

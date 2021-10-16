@@ -40,6 +40,7 @@ export class CustomerDepositComponent implements OnInit {
     this.getaccountbyid();
   }
 
+  //get accounts by accountid
   getaccountbyid() {
 
     this.localaccount = JSON.parse(localStorage.getItem('localaccount')!);
@@ -56,6 +57,7 @@ export class CustomerDepositComponent implements OnInit {
         
   }
 
+  //update account by accountid
   updateaccountbyid() {
     console.log(this.accid);
     this.custaccount = {
@@ -87,6 +89,7 @@ export class CustomerDepositComponent implements OnInit {
   }
 
 
+  //save deposit transaction
   createtransaction(transamount: any) {
 
     console.log(transamount);
