@@ -28,6 +28,9 @@ export class CustomerWithdrawalComponent implements OnInit {
 
   myDate = new Date();
 
+  Message = 'Transaction successfully completed';
+  transactioncomplete = false;
+
 
   constructor(
     public restApi: CustomertransactionService,
@@ -74,6 +77,8 @@ export class CustomerWithdrawalComponent implements OnInit {
     
     this.restApi1.updateAccountbyid(this.accid, this.custaccount).subscribe(data => {
       //this.router.navigate(['/admincustomermanager'])
+    
+      this.transactioncomplete = true;
     })
 
     this.custaccount = {
@@ -121,8 +126,13 @@ export class CustomerWithdrawalComponent implements OnInit {
 
   }
 
+  backtoAccountdetails(){
+    this.router.navigate(['/customeraccountdetails']);
+  }
+
   logout(){
     localStorage.removeItem('localUser');
+    localStorage.removeItem('localToaccount');
     localStorage.removeItem('localaccount');
     this.router.navigate(['/customerlogin']);
 

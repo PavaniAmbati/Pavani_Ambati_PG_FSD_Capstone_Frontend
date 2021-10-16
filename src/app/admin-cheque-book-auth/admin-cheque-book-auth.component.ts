@@ -16,6 +16,7 @@ export class AdminChequeBookAuthComponent implements OnInit {
   public stringifychequerequest: any;
   public approvalstatus: any = [];
 
+
   constructor(
     public restApi: ChequerequestService,
     public router: Router
@@ -64,6 +65,7 @@ export class AdminChequeBookAuthComponent implements OnInit {
     
       this.restApi.updateChequerequest(this.parsechequerequest.chequerequestid, this.approvalstatus).subscribe(data => {
         //this.router.navigate(['/admincustomermanager'])
+        window.location.reload();
       })
     } else {
       this.approvalstatus = {
@@ -72,6 +74,7 @@ export class AdminChequeBookAuthComponent implements OnInit {
       }
       this.restApi.updateChequerequest(this.parsechequerequest.chequerequestid, this.approvalstatus).subscribe(data => {
         //this.router.navigate(['/admincustomermanagement'])
+        window.location.reload();
       })
     }
 

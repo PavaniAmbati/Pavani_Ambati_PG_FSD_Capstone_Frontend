@@ -13,6 +13,9 @@ export class CustomerChequebookRequestComponent implements OnInit {
   public chequerequests: any = [];
   public chequerequest: any = [];
 
+  Message = 'Transaction successfully completed';
+  transactioncomplete = false;
+
   accid = this.actRoute.snapshot.params['Id'];
   accountnumber = this.actRoute.snapshot.params['Accountnumber'];
 
@@ -38,14 +41,20 @@ export class CustomerChequebookRequestComponent implements OnInit {
     console.log(this.chequerequest);
 
     this.restApi.createRequest(this.chequerequest).subscribe(data => {
+      this.transactioncomplete = true;
       
     }) 
 
   }
 
+  backtoAccountdetails(){
+    this.router.navigate(['/customeraccountdetails']);
+  }
+
   logout(){
     localStorage.removeItem('localUser');
     localStorage.removeItem('localaccount');
+    localStorage.removeItem('localToaccount');
     this.router.navigate(['/customerlogin']);
 
   }

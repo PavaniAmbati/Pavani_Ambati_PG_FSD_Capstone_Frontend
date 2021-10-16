@@ -106,6 +106,7 @@ export class CustomerAccountdetailsComponent implements OnInit {
   logout(){
     localStorage.removeItem('localUser');
     localStorage.removeItem('localaccount');
+    localStorage.removeItem('localToaccount');
     this.router.navigate(['/customerlogin']);
 
   }  

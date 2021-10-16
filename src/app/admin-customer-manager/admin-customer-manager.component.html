@@ -35,6 +35,10 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
+    <a class="nav-link text-warning" routerLink="/adminhome" href="#"><b>Home</b></a>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;
+
     <form class="form-inline my-2 my-lg-0">
       <h3><a class="nav-link text-secondary">Admin Portal - Customer Manager</a></h3>
     </form>
@@ -76,7 +80,7 @@
   </div>
 
   <br><br>
-
+  <h6 class="text-danger" *ngIf='OnlineUsernotexist'>{{Message}}</h6>
   <div class="col-md-12">
 
     <table class="table table-bordered">
@@ -114,6 +118,7 @@
           </select> &nbsp;&nbsp;
           <button class="btn btn-secondary my-2 my-sm-0" name="submit" type="submit"
             (click)='updateStatus(cust, customer)'>Submit</button>
+           
         </td>
 
         </tr>

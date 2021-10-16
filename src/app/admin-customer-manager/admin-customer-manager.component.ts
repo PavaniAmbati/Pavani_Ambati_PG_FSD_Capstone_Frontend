@@ -16,6 +16,9 @@ export class AdminCustomerManagerComponent implements OnInit {
   public stringifycustomer: any;
   public onlineaccountstatus: any = [];
 
+  Message = 'Online user account does not exist to change status';
+  OnlineUsernotexist = false;
+
   constructor(
     public restApi: CustomerService,
     public router: Router
@@ -35,72 +38,82 @@ export class AdminCustomerManagerComponent implements OnInit {
     })
   }
 
- //filter customer list by status
+  //filter customer list by status
   filterCustomer(onlineaccountstatus: any) {
 
     console.log(onlineaccountstatus.status);
-   return this.restApi.getCustomersbystatus(onlineaccountstatus.status).subscribe((data: {}) => {
+    return this.restApi.getCustomersbystatus(onlineaccountstatus.status).subscribe((data: {}) => {
       this.customers = data;
       console.log(this.customers);
-    }) 
-}
+    })
+  }
 
 
   //update customer online account status
   updateStatus(cust: any, customer: any) {
 
-    console.log(cust.approval);
-    console.log(customer);
-
-    this.stringifycustomer = JSON.stringify(customer);
-    // Parse from JSON  
-    this.parsecustomer = JSON.parse(this.stringifycustomer);
-    //console.log(this.parsecustomer);
-
-    if (cust.approval == "activate") {
-      this.onlineaccountstatus = {
-        "firstname": this.parsecustomer.firstname,
-        "lastname": this.parsecustomer.lastname,
-        "phonenumber": this.parsecustomer.phonenumber,
-        "email": this.parsecustomer.email,
-        "housenumber": this.parsecustomer.housenumber,
-        "streetname": this.parsecustomer.streetname,
-        "city": this.parsecustomer.city,
-        "state": this.parsecustomer.state,
-        "country": this.parsecustomer.country,
-        "postalcode": this.parsecustomer.postalcode,
-        "dateofbirth": this.parsecustomer.dateofbirth,
-        "onlineaccountstatus": "active"
-      }
-      //console.log(this.onlineaccountstatus);
-
-      this.restApi.updateCustomer(this.parsecustomer.custid, this.onlineaccountstatus).subscribe(data => {
-        //this.router.navigate(['/admincustomermanager'])
-      })
+    if (customer.username === '') {
+      this.OnlineUsernotexist = true;
     } else {
-      this.onlineaccountstatus = this.onlineaccountstatus = {
-        "firstname": this.parsecustomer.firstname,
-        "lastname": this.parsecustomer.lastname,
-        "phonenumber": this.parsecustomer.phonenumber,
-        "email": this.parsecustomer.email,
-        "housenumber": this.parsecustomer.housenumber,
-        "streetname": this.parsecustomer.streetname,
-        "city": this.parsecustomer.city,
-        "state": this.parsecustomer.state,
-        "country": this.parsecustomer.country,
-        "postalcode": this.parsecustomer.postalcode,
-        "dateofbirth": this.parsecustomer.dateofbirth,
-        "onlineaccountstatus": "blocked"
-      }
-      this.restApi.updateCustomer(this.parsecustomer.custid, this.onlineaccountstatus).subscribe(data => {
-        //this.router.navigate(['/admincustomermanagement'])
-      })
-    }
 
+      console.log(cust.approval);
+      console.log(customer);
+
+      this.stringifycustomer = JSON.stringify(customer);
+      // Parse from JSON  
+      this.parsecustomer = JSON.parse(this.stringifycustomer);
+      //console.log(this.parsecustomer);
+
+      if (cust.approval == "activate") {
+        this.onlineaccountstatus = {
+          "firstname": this.parsecustomer.firstname,
+          "lastname": this.parsecustomer.lastname,
+          "phonenumber": this.parsecustomer.phonenumber,
+          "email": this.parsecustomer.email,
+          "housenumber": this.parsecustomer.housenumber,
+          "streetname": this.parsecustomer.streetname,
+          "city": this.parsecustomer.city,
+          "state": this.parsecustomer.state,
+          "country": this.parsecustomer.country,
+          "postalcode": this.parsecustomer.postalcode,
+          "dateofbirth": this.parsecustomer.dateofbirth,
+          "onlineaccountstatus": "active",
+          "username": this.parsecustomer.username,
+          "password": this.parsecustomer.password
+        }
+        //console.log(this.onlineaccountstatus);
+
+        this.restApi.updateCustomer(this.parsecustomer.custid, this.onlineaccountstatus).subscribe(data => {
+          //this.router.navigate(['/admincustomermanager'])
+          window.location.reload();
+        })
+      } else {
+        this.onlineaccountstatus = this.onlineaccountstatus = {
+          "firstname": this.parsecustomer.firstname,
+          "lastname": this.parsecustomer.lastname,
+          "phonenumber": this.parsecustomer.phonenumber,
+          "email": this.parsecustomer.email,
+          "housenumber": this.parsecustomer.housenumber,
+          "streetname": this.parsecustomer.streetname,
+          "city": this.parsecustomer.city,
+          "state": this.parsecustomer.state,
+          "country": this.parsecustomer.country,
+          "postalcode": this.parsecustomer.postalcode,
+          "dateofbirth": this.parsecustomer.dateofbirth,
+          "onlineaccountstatus": "blocked",
+          "username": this.parsecustomer.username,
+          "password": this.parsecustomer.password
+        }
+        this.restApi.updateCustomer(this.parsecustomer.custid, this.onlineaccountstatus).subscribe(data => {
+          //this.router.navigate(['/admincustomermanagement'])
+          window.location.reload();
+        })
+      }
+    }
 
   }
 
-  logout(){
+  logout() {
     localStorage.removeItem('localUser');
     localStorage.removeItem('localAccount');
     this.router.navigate(['/adminlogin']);

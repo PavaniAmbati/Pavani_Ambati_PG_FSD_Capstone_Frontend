@@ -29,6 +29,9 @@ export class CustomerMoneytransferComponent implements OnInit {
 
   myDate = new Date();
 
+  Message = 'Transaction successfully completed';
+  transactioncomplete = false;
+
   accnum = this.actRoute.snapshot.params['Accountnumber'];
 
   constructor(
@@ -60,12 +63,15 @@ export class CustomerMoneytransferComponent implements OnInit {
   }
 
 
-  updateaccountbyid() {
+  updateaccountbyid(moneytransfers: any) {
     //console.log(this.accid);
+    this.totalamount = this.custaccounts.totalamount;
+    this.totalamountcalc = ((this.totalamount) - (moneytransfers.transamount));
+
     this.custaccount = {
       "accountnumber": this.custaccounts.accountnumber,
       "accounttype": this.custaccounts.accounttype,
-      "custid": this.custid,
+      "custid": this.custaccounts.custid,
       "pinnumber": this.custaccounts.pinnumber,
       "totalamount": this.totalamountcalc
 
@@ -80,7 +86,7 @@ export class CustomerMoneytransferComponent implements OnInit {
       "accountid": this.accid,
       "accountnumber": this.custaccounts.accountnumber,
       "accounttype": this.custaccounts.accounttype,
-      "custid": this.custid,
+      "custid": this.custaccounts.custid,
       "pinnumber": this.custaccounts.pinnumber,
       "totalamount": this.totalamountcalc
 
@@ -90,7 +96,7 @@ export class CustomerMoneytransferComponent implements OnInit {
   }
 
 
-  createtransaction(transamount: any) {
+  createtransaction(moneytransfers: any) {
 
     //console.log(transamount);
     //console.log(this.datePipe.transform(this.myDate, 'yyyy-MM-dd'));
@@ -99,7 +105,7 @@ export class CustomerMoneytransferComponent implements OnInit {
    
       this.custid = this.localaccount.custid;
       this.totalamount = this.localaccount.totalamount;
-      this.totalamountcalc = ((this.totalamount) - (transamount));
+      this.totalamountcalc = ((this.totalamount) - (moneytransfers.transamount));
       //console.log(this.totalamountcalc);
 
       this.moneytransfer = {
@@ -108,8 +114,9 @@ export class CustomerMoneytransferComponent implements OnInit {
         "custid": this.custid,
         "transdate": this.datePipe.transform(this.myDate, 'yyyy-MM-dd'),
         "transtype": "money transfer",
-        "transamount": transamount,
-        "balanceamount": this.totalamountcalc
+        "transamount": moneytransfers.transamount,
+        "balanceamount": this.totalamountcalc,
+        "transaccountnumber": moneytransfers.toaccountnumber
   
       }
       
@@ -121,10 +128,10 @@ export class CustomerMoneytransferComponent implements OnInit {
   }
 
 
-  getToaccountbynum(accountnumber: any) {
+  getToaccountbynum(toaccountnumber: any) {
 
-     console.log(accountnumber);
-      return this.restApi1.getAccountbynum(accountnumber).subscribe((data: {}) => {
+     console.log(toaccountnumber);
+      return this.restApi1.getAccountbynum(toaccountnumber).subscribe((data: {}) => {
         this.custToaccounts = data;
         console.log(this.custToaccounts);
        
@@ -154,6 +161,7 @@ export class CustomerMoneytransferComponent implements OnInit {
     this.localToaccount = JSON.parse(localStorage.getItem('localToaccount')!);
 
     console.log(moneytransfers.transamount);
+    console.log(this.localToaccount.totalamount);
     console.log(this.datePipe.transform(this.myDate, 'yyyy-MM-dd'));
 
     this.totalamount = this.localToaccount.totalamount;
@@ -165,7 +173,7 @@ export class CustomerMoneytransferComponent implements OnInit {
       this.moneytransfer = {
 
         "accountid": this.localToaccount.accountid,
-        "transfromaccountnumber": this.localaccount.accountnumber,
+        "transaccountnumber": this.accnum,
         "custid": this.localToaccount.custid,
         "transdate": this.datePipe.transform(this.myDate, 'yyyy-MM-dd'),
         "transtype": "money transfer",
@@ -182,9 +190,12 @@ export class CustomerMoneytransferComponent implements OnInit {
 
   }
 
-  updateToaccountbyid() {
-
+  updateToaccountbyid(moneytransfers: any) {
     this.localToaccount = JSON.parse(localStorage.getItem('localToaccount')!);
+    this.totalamount = this.localToaccount.totalamount;
+    this.totalamountcalc = ((this.totalamount)+ +(moneytransfers.transamount));
+
+    
     
     this.custToaccount = {
       "accountnumber": this.localToaccount.accountnumber,
@@ -198,8 +209,10 @@ export class CustomerMoneytransferComponent implements OnInit {
     
     this.restApi1.updateAccountbyid(this.localToaccount.accountid, this.custToaccount).subscribe(data => {
       //this.router.navigate(['/admincustomermanager'])
+      this.transactioncomplete = true;
+      //localStorage.removeItem('localToaccount');
     }) 
-
+   
     this.custToaccount = {
       "accountid": this.localToaccount.accoutnumber,
       "accountnumber": this.localToaccount.accountnumber,
@@ -209,13 +222,18 @@ export class CustomerMoneytransferComponent implements OnInit {
       "totalamount": this.totalamountcalc
 
     }
-    localStorage.setItem('localToaccount', JSON.stringify(this.custToaccount));
+    localStorage.setItem('localToaccount', JSON.stringify(this.custToaccount)); 
 
+  }
+
+  backtoAccountdetails(){
+    this.router.navigate(['/customeraccountdetails']);
   }
 
   logout(){
     localStorage.removeItem('localUser');
     localStorage.removeItem('localaccount');
+    localStorage.removeItem('localToaccount');
     this.router.navigate(['/customerlogin']);
 
   }

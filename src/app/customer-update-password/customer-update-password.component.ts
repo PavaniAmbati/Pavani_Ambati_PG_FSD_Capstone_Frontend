@@ -87,6 +87,8 @@ export class CustomerUpdatePasswordComponent implements OnInit {
 
   logout() {
     localStorage.removeItem('localUser');
+    localStorage.removeItem('localtoaccount');
+    localStorage.removeItem('localToaccount');
     this.router.navigate(['/customerlogin']);
 
   }

@@ -15,7 +15,7 @@ export class AdminLoginComponent implements OnInit {
 
   public id!: string;
 
-  @Input() users = {Username: '', Password: ''}
+  @Input() users = { Username: '', Password: '' }
   errorMessage = 'Invalid Credentials. Try again.';
   invalidLogin = false;
 
@@ -28,7 +28,7 @@ export class AdminLoginComponent implements OnInit {
     this.loadadminusers();
   }
 
-  loadadminusers(){
+  loadadminusers() {
     return this.restApi.getUsers().subscribe((data: {}) => {
       this.adminusers = data;
       console.log(this.adminusers);
@@ -37,41 +37,56 @@ export class AdminLoginComponent implements OnInit {
   }
 
   handleLogin(users: any) {
-  
-    //console.log(this.adminusers.length)
-    for (let i = 0; i < this.adminusers.length; i++) {
-      if (this.adminusers[i].username === users.Username && this.adminusers[i].password === users.Password) {
-        console.log(this.adminusers);
-        console.log(this.users);
-        console.log("valid login");
-        this.invalidLogin = false;
-        this.id = this.adminusers[i].id
-        console.log(this.id)
-        this.adminuser = [{"id": this.id, "Username": users.Username, "Password": users.Password}]
-        localStorage.setItem('localUser',JSON.stringify(this.adminuser));
-        this.router.navigate(['/adminhome']);
-    } else {
-      console.log("invalid login");
-      
+
+    if (users.Username === '') {
       this.invalidLogin = true;
+    } else {
+      if (users.Password === '') {
+        this.invalidLogin = true;
+      } else {
+        //console.log(this.adminusers.length)
+        for (let i = 0; i < this.adminusers.length; i++) {
+          if (this.adminusers[i].username === users.Username && this.adminusers[i].password === users.Password) {
+            console.log(this.adminusers);
+            console.log(this.users);
+            console.log("valid login");
+            this.invalidLogin = false;
+            this.id = this.adminusers[i].id
+            console.log(this.id)
+            this.adminuser = [{ "id": this.id, "Username": users.Username, "Password": users.Password }]
+            localStorage.setItem('localUser', JSON.stringify(this.adminuser));
+            this.router.navigate(['/adminhome']);
+          } else {
+            console.log("invalid login");
+
+            this.invalidLogin = true;
+          }
+        }
       }
     }
   }
 
   updatePassword(users: any) {
-  
-    for (let i = 0; i < this.adminusers.length; i++) {
-      if (this.adminusers[i].username === users.Username && this.adminusers[i].password === users.Password) {
-        this.invalidLogin = false;
-        this.id = this.adminusers[i].id
-        console.log(this.id)
-        //this.adminuser = [{"id": this.id, "Username": users.Username, "Password": users.Password}]
-        //localStorage.setItem('localUser',JSON.stringify(this.adminuser));
-        this.router.navigate(['/adminupdatepassword/'+ users.Username]); 
-    } else {
+    if (users.Username === '') {
       this.invalidLogin = true;
+    } else {
+      if (users.Password === '') {
+        this.invalidLogin = true;
+      } else {
+
+        for (let i = 0; i < this.adminusers.length; i++) {
+          if (this.adminusers[i].username === users.Username && this.adminusers[i].password === users.Password) {
+            this.invalidLogin = false;
+            this.id = this.adminusers[i].id
+            console.log(this.id)
+            //this.adminuser = [{"id": this.id, "Username": users.Username, "Password": users.Password}]
+            //localStorage.setItem('localUser',JSON.stringify(this.adminuser));
+            this.router.navigate(['/adminupdatepassword/' + users.Username]);
+          } else {
+            this.invalidLogin = true;
+          }
+        }
       }
     }
-}
-
+  }
 }
