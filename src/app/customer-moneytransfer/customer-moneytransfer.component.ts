@@ -114,7 +114,7 @@ export class CustomerMoneytransferComponent implements OnInit {
         "custid": this.custid,
         "transdate": this.datePipe.transform(this.myDate, 'yyyy-MM-dd'),
         "transtype": "money transfer",
-        "transamount": moneytransfers.transamount,
+        "transamount": -moneytransfers.transamount,
         "balanceamount": this.totalamountcalc,
         "transaccountnumber": moneytransfers.toaccountnumber
   
@@ -161,7 +161,7 @@ export class CustomerMoneytransferComponent implements OnInit {
     this.localToaccount = JSON.parse(localStorage.getItem('localToaccount')!);
 
     console.log(moneytransfers.transamount);
-    console.log(this.localToaccount.totalamount);
+    console.log(this.localToaccount);
     console.log(this.datePipe.transform(this.myDate, 'yyyy-MM-dd'));
 
     this.totalamount = this.localToaccount.totalamount;

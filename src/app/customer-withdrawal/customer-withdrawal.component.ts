@@ -114,7 +114,7 @@ export class CustomerWithdrawalComponent implements OnInit {
         "custid": this.custid,
         "transdate": this.datePipe.transform(this.myDate, 'yyyy-MM-dd'),
         "transtype": "withdrawal",
-        "transamount": transamount,
+        "transamount": -transamount,
         "balanceamount": this.totalamountcalc
   
       }
