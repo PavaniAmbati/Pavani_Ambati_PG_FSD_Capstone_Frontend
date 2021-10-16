@@ -1,17 +1,22 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CustomeraccountService } from '../Shared/customeraccount.service';
+import { CustomerService } from '../Shared/customer.service';
 
 @Component({
   selector: 'app-customer-registration',
   templateUrl: './customer-registration.component.html',
-  styleUrls: ['./customer-registration.component.css']
+  styleUrls: ['./customer-registration.component.css'],
+  providers: [CustomerService, CustomeraccountService]
 })
 export class CustomerRegistrationComponent implements OnInit {
 
   public customeraccounts: any = [];
   public customeraccount: any = [];
   public id!: string;
+  public customers: any = [];
+  public custid!: string;
+  public localaccount: any = [];
 
   @Input() users = {Accountnumber: '', Pinnumber: ''}
   errorMessage = 'Invalid Credentials. Try again.';
@@ -19,6 +24,7 @@ export class CustomerRegistrationComponent implements OnInit {
 
   constructor(
     public restApi: CustomeraccountService,
+    public restApi1: CustomerService,
     public router: Router
   ) { }
 
@@ -55,7 +61,7 @@ export class CustomerRegistrationComponent implements OnInit {
       }]
       console.log(this.customeraccount);
         localStorage.setItem('localAccount',JSON.stringify(this.customeraccount));
-        this.router.navigate(['/customerusersetup']);
+        //this.router.navigate(['/customerusersetup']);
     } else {
       console.log("invalid login");
       
@@ -63,5 +69,29 @@ export class CustomerRegistrationComponent implements OnInit {
       }
     }
   }
+
+  getcustomerbyid() {
+
+   
+    this.localaccount = JSON.parse(localStorage.getItem('localAccount')!);
+
+      for (let i = 0; i < this.localaccount.length; i++) {
+        this.custid = this.localaccount[i].custid;
+        console.log(this.custid);
+        return this.restApi1.getCustomersbyid(this.custid).subscribe((data: {}) => {
+          this.customers = data;
+          console.log(this.customers);
+
+          if (this.customers.username === ""){
+            this.router.navigate(['/customerusersetup']);
+          }else {
+            this.router.navigate(['/customerregistration']);
+          }
+
+        })     
+        
+  }
+
+}
 
 }

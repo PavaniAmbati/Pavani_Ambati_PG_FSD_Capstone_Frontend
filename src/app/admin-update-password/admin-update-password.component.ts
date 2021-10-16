@@ -59,6 +59,7 @@ export class AdminUpdatePasswordComponent implements OnInit {
 
   logout() {
     localStorage.removeItem('localUser');
+    localStorage.removeItem('localAccount');
     this.router.navigate(['/adminlogin']);
 
   }
