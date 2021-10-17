@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AdminuserService } from '../adminuser.service';
+import { AdminuserService } from '../Shared/adminuser.service';
 
 @Component({
   selector: 'app-admin-update-password',
