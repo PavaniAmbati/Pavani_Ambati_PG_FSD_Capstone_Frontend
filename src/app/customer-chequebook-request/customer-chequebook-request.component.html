@@ -93,19 +93,19 @@
         <div class="form-group">
           <label><b>Select Checkbook</b></label>
           &nbsp;&nbsp;
-          <select name="Authorize" id="#" [(ngModel)]="chequerequests.chequetype">
+          <select name="Authorize" id="chequebook" [(ngModel)]="chequerequests.chequetype">
             <option value="100 Cheques">100 Cheques</option>
             <option value="50 Cheques">50 Cheques</option>
             <option value="25 Cheques">25 Cheques</option>
           </select>
           <br><br>
           
-          <button type="submit" class="btn btn-secondary "
+          <button type="submit" id="chequebookrequest" class="btn btn-secondary "
             (click)='createChequerequest(chequerequests.chequetype)'>Submit Cheque Request</button>
          &nbsp;&nbsp;
           <button type="submit" class="btn btn-secondary " (click)='backtoAccountdetails()'>Back to
             AccountDetails</button>
-          <h6 class="text-success" *ngIf='transactioncomplete'>{{Message}}</h6>
+          <h6 class="text-success" id="flash" *ngIf='transactioncomplete'>{{Message}}</h6>
 
         </div>
         <!--form column ends  routerLink = "/adminhome"-->

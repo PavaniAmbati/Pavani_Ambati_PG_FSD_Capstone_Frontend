@@ -100,10 +100,10 @@
                     </div>
 
 
-                    <button type="submit" class="btn btn-secondary " (click)='createtransaction(deposits.transamount); updateaccountbyid()'>Deposit Amount</button>
+                    <button type="submit" id="depositmoney" class="btn btn-secondary " (click)='createtransaction(deposits.transamount); updateaccountbyid()'>Deposit Amount</button>
                     &nbsp;&nbsp;&nbsp;
-                    <button type="submit" class="btn btn-secondary " (click)='backtoAccountdetails()'>Back to AccountDetails</button>
-                    <h6 class="text-success" *ngIf='transactioncomplete'>{{Message}}</h6>
+                    <button type="submit"  class="btn btn-secondary " (click)='backtoAccountdetails()'>Back to AccountDetails</button>
+                    <h6 class="text-success" id="flash" *ngIf='transactioncomplete'>{{Message}}</h6>
 
                 </div>
                 <!--form column ends  routerLink = "/adminhome" (click)='createChequerequest(chequerequests.chequetype)' [(ngModel)]="users.Newpassword"-->

@@ -16,6 +16,11 @@ export class AdminChequeBookAuthComponent implements OnInit {
   public stringifychequerequest: any;
   public approvalstatus: any = [];
 
+  successMessage = 'Transaction successfully completed';
+  transactioncomplete = false;
+
+  errorMessage = 'Approval dropdown is blank';
+  statusnotselected = false;
 
   constructor(
     public restApi: ChequerequestService,
@@ -32,7 +37,7 @@ export class AdminChequeBookAuthComponent implements OnInit {
       this.chequerequests = data;
       console.log(this.chequerequests);
     })
-  } 
+  }
 
 
 
@@ -49,39 +54,45 @@ export class AdminChequeBookAuthComponent implements OnInit {
   //update customer online account status
   updateStatus(cheque: any, chequerequest: any) {
 
-    console.log(cheque.approval);
-    console.log(chequerequest);
-
-    this.stringifychequerequest = JSON.stringify(chequerequest);
-    // Parse from JSON  
-    this.parsechequerequest = JSON.parse(this.stringifychequerequest);
-    //console.log(this.parsecustomer);
-
-    if (cheque.approval == "approve") {
-      this.approvalstatus = {
-        "chequetype": this.parsechequerequest.chequetype,
-        "chequerequeststatus": "approved"
-      }
-    
-      this.restApi.updateChequerequest(this.parsechequerequest.chequerequestid, this.approvalstatus).subscribe(data => {
-        //this.router.navigate(['/admincustomermanager'])
-        window.location.reload();
-      })
+    if (cheque.approval === '') {
+      this.statusnotselected = true;
     } else {
-      this.approvalstatus = {
-        "chequetype": this.parsechequerequest.chequetype,
-        "chequerequeststatus": "declined"
+
+      console.log(cheque.approval);
+      console.log(chequerequest);
+
+      this.stringifychequerequest = JSON.stringify(chequerequest);
+      // Parse from JSON  
+      this.parsechequerequest = JSON.parse(this.stringifychequerequest);
+      //console.log(this.parsecustomer);
+
+      if (cheque.approval == "approve") {
+        this.approvalstatus = {
+          "chequetype": this.parsechequerequest.chequetype,
+          "chequerequeststatus": "approved"
+        }
+
+        this.restApi.updateChequerequest(this.parsechequerequest.chequerequestid, this.approvalstatus).subscribe(data => {
+          //this.router.navigate(['/admincustomermanager'])
+          this.transactioncomplete = true;
+          //window.location.reload();
+        })
+      } else {
+        this.approvalstatus = {
+          "chequetype": this.parsechequerequest.chequetype,
+          "chequerequeststatus": "declined"
+        }
+        this.restApi.updateChequerequest(this.parsechequerequest.chequerequestid, this.approvalstatus).subscribe(data => {
+          //this.router.navigate(['/admincustomermanagement'])
+          this.transactioncomplete = true;
+          //window.location.reload();
+        })
       }
-      this.restApi.updateChequerequest(this.parsechequerequest.chequerequestid, this.approvalstatus).subscribe(data => {
-        //this.router.navigate(['/admincustomermanagement'])
-        window.location.reload();
-      })
+
     }
+  }
 
-
-  } 
-
-  logout(){
+  logout() {
     localStorage.removeItem('localUser');
     localStorage.removeItem('localAccount');
     this.router.navigate(['/adminlogin']);

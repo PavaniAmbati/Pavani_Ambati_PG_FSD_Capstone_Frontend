@@ -225,6 +225,7 @@ export class CustomerMoneytransferComponent implements OnInit {
 
     }
     localStorage.setItem('localToaccount', JSON.stringify(this.custToaccount)); 
+    this.transactioncomplete = true
 
   }
 
