@@ -9,7 +9,9 @@ import { chequerequestInterface } from './chequerequest';
 })
 export class ChequerequestService {
 
-  apiURL = 'http://localhost:8000/api'
+  //apiURL = 'http://localhost:8000/api'
+
+  apiURL = 'http://capstoneproduction.eba-kjfwefmp.us-east-1.elasticbeanstalk.com/api'
   constructor(private http: HttpClient) { }
 
   // Http Options
