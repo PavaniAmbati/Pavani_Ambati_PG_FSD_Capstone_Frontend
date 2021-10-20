@@ -54,7 +54,7 @@ export class AdminCustomerManagerComponent implements OnInit {
   filterCustomer(onlineaccountstatus: any) {
 
     console.log(onlineaccountstatus.status);
-    return this.restApi.getCustomersbystatus(onlineaccountstatus.status).subscribe((data: {}) => {
+    return this.restApi.getCustomersbystatus(onlineaccountstatus).subscribe((data: {}) => {
       this.customers = data;
       console.log(this.customers);
     })
