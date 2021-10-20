@@ -11,7 +11,7 @@ export class AdminuserService {
 
   //apiURL = 'http://localhost:8000/api';
 
-  apiURL = 'Icinbank1-env.eba-pad3text.us-east-1.elasticbeanstalk.com/api'
+  apiURL = 'Icinbank-env.eba-kjfwefmp.us-east-1.elasticbeanstalk.com/api'
   constructor(private http: HttpClient) { }
 
   // Http Options
